@@ -1,0 +1,92 @@
+{
+    "nav": {
+        "name": "Khaled Almasri",
+        "about": "About",
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Hi, I'm",
+        "name": "Khaled Almasri",
+        "subtitle": "A passionate software developer crafting beautiful web experiences",
+        "viewWork": "View My Work",
+        "getInTouch": "Get in Touch"
+    },
+    "about": {
+        "title": "About Me",
+        "description1": "I'm a passionate software developer with a strong foundation in modern web technologies. My journey in tech started with a curiosity about how things work on the internet, which led me to pursue a career in software development.",
+        "description2": "I specialize in building responsive and user-friendly web applications, with expertise in both frontend and backend development. I'm constantly learning and staying up-to-date with the latest technologies to deliver the best solutions.",
+        "description3": "I also have a strong understanding of Artificial Intelligence concepts, including machine learning workflows, data processing, and AI-assisted development. Combined with my hardware and mechatronics background, I bridge the gap between software and physical systems, enabling me to build intelligent, real-world solutions.",
+        "educationTitle": "Education & Expertise",
+        "edu1Title": "Full Stack Web Developer (Apprenticeship)",
+        "edu1Sub": "Vocational Education & Training (VET), Austria",
+        "edu1Desc": "Frontend & backend development, APIs, databases, and modern web technologies.",
+        "edu2Title": "Mechatronics Engineering Technician (Apprenticeship)",
+        "edu2Sub": "Vocational Education & Training (VET), Austria",
+        "edu2Desc": "Hardware systems, electronics, automation, troubleshooting, and industrial technology.",
+        "edu3Title": "Artificial Intelligence & Machine Learning (Self-Study / Practical Experience)",
+        "edu3Desc": "AI fundamentals, model usage, automation, prompt engineering, and AI-assisted development workflows."
+    },
+    "skills": {
+        "title": "Skills",
+        "technical": "Technical Skills",
+        "soft": "Soft Skills",
+        "items": {
+            "js": "JavaScript",
+            "vue": "Vue.js",
+            "node": "Node.js",
+            "python": "Python",
+            "java": "Java",
+            "ai": "Artificial Intelligence (AI)",
+            "aiDev": "AI-assisted Development",
+            "electronics": "Electronics Repair (Component-Level)",
+            "circuit": "Circuit Diagnostics",
+            "soldering": "Soldering & Rework",
+            "embedded": "Embedded Hardware Basics",
+            "mechatronics": "Mechatronics Systems",
+            "problemSolving": "Problem Solving",
+            "collaboration": "Team Collaboration",
+            "communication": "Communication",
+            "timeManagement": "Time Management",
+            "adaptability": "Adaptability",
+            "criticalThinking": "Critical Thinking"
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "viewCode": "View Code",
+        "liveDemo": "Live Demo",
+        "items": {
+            "p1": {
+                "title": "Project 1",
+                "desc": "A brief description of your first project and its key features."
+            },
+            "p2": {
+                "title": "Project 2",
+                "desc": "Description of your second project highlighting its unique aspects."
+            },
+            "p3": {
+                "title": "Project 3",
+                "desc": "Overview of your third project and its main functionalities."
+            }
+        }
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "info": "Contact Information",
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "message": "Message",
+            "send": "Send Message",
+            "success": "Message sent successfully!",
+            "fail": "Failed to send message. Please try again."
+        }
+    },
+    "lang": {
+        "en": "English",
+        "ar": "العربية",
+        "de": "Deutsch"
+    }
+}

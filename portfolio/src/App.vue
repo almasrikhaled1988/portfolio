@@ -1,13 +1,16 @@
 <script setup>
 import { useHead } from '@vueuse/head'
 import { useDark, useToggle } from '@vueuse/core'
-import { watch } from 'vue'
+import { watch, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import NavBar from './components/NavBar.vue'
 import Hero from './components/Hero.vue'
 import AboutMe from './components/AboutMe.vue'
 import Skills from './components/Skills.vue'
 import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
+
+const { t, locale } = useI18n()
 
 // Setup dark mode
 const isDark = useDark({
@@ -18,19 +21,20 @@ const isDark = useDark({
 })
 const toggleDark = useToggle(isDark)
 
-// Setup meta tags
+// Setup meta tags reactively
 useHead({
-  title: 'Your Name - Portfolio',
+  title: computed(() => `${t('nav.name')} - ${t('nav.projects')}`),
   meta: [
-    { name: 'description', content: 'Professional portfolio showcasing my software development projects and skills' },
+    { name: 'description', content: computed(() => t('hero.subtitle')) },
     { name: 'keywords', content: 'software developer, web development, portfolio, projects' },
-    { name: 'author', content: 'Your Name' },
-    { property: 'og:title', content: 'Your Name - Portfolio' },
-    { property: 'og:description', content: 'Professional portfolio showcasing my software development projects and skills' },
+    { name: 'author', content: computed(() => t('nav.name')) },
+    { property: 'og:title', content: computed(() => `${t('nav.name')} - ${t('nav.projects')}`) },
+    { property: 'og:description', content: computed(() => t('hero.subtitle')) },
     { property: 'og:type', content: 'website' }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: computed(() => locale.value),
+    dir: computed(() => locale.value === 'ar' ? 'rtl' : 'ltr')
   }
 })
 </script>

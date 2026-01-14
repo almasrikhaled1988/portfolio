@@ -1,0 +1,92 @@
+{
+    "nav": {
+        "name": "Khaled Almasri",
+        "about": "Über mich",
+        "skills": "Fähigkeiten",
+        "projects": "Projekte",
+        "contact": "Kontakt"
+    },
+    "hero": {
+        "greeting": "Hi, ich bin",
+        "name": "Khaled Almasri",
+        "subtitle": "Ein leidenschaftlicher Softwareentwickler, der schöne Web-Erlebnisse schafft",
+        "viewWork": "Meine Arbeit ansehen",
+        "getInTouch": "Kontakt aufnehmen"
+    },
+    "about": {
+        "title": "Über mich",
+        "description1": "Ich bin ein leidenschaftlicher Softwareentwickler mit einem starken Fundament in modernen Webtechnologien. Meine Reise in der Technik begann mit der Neugier, wie Dinge im Internet funktionieren, was mich dazu führte, eine Karriere in der Softwareentwicklung einzuschlagen.",
+        "description2": "Ich spezialisiere mich auf den Aufbau responsiver und benutzerfreundlicher Webanwendungen mit Fachwissen sowohl in der Frontend- als auch in der Backend-Entwicklung. Ich lerne ständig dazu und bleibe auf dem neuesten Stand der Technik, um die besten Lösungen zu liefern.",
+        "description3": "Ich verfüge auch über ein fundiertes Verständnis von Konzepten der Künstlichen Intelligenz, einschließlich Machine-Learning-Workflows, Datenverarbeitung und KI-gestützter Entwicklung. In Verbindung mit meinem Hintergrund in Hardware und Mechatronik schlage ich die Brücke zwischen Software und physischen Systemen, was es mir ermöglicht, intelligente Lösungen für die reale Welt zu bauen.",
+        "educationTitle": "Bildung & Expertise",
+        "edu1Title": "Full Stack Webentwickler (Lehre)",
+        "edu1Sub": "Berufsbildung (VET), Österreich",
+        "edu1Desc": "Frontend- und Backend-Entwicklung, APIs, Datenbanken und moderne Webtechnologien.",
+        "edu2Title": "Mechatroniker (Lehre)",
+        "edu2Sub": "Berufsbildung (VET), Österreich",
+        "edu2Desc": "Hardwaresysteme, Elektronik, Automatisierung, Fehlersuche und Industrietechnologie.",
+        "edu3Title": "Künstliche Intelligenz & Maschinelles Lernen (Selbststudium / Praktische Erfahrung)",
+        "edu3Desc": "KI-Grundlagen, Modellnutzung, Automatisierung, Prompt-Engineering und KI-gestützte Entwicklungsworkflows."
+    },
+    "skills": {
+        "title": "Fähigkeiten",
+        "technical": "Technische Fähigkeiten",
+        "soft": "Soft Skills",
+        "items": {
+            "js": "JavaScript",
+            "vue": "Vue.js",
+            "node": "Node.js",
+            "python": "Python",
+            "java": "Java",
+            "ai": "Künstliche Intelligenz (KI)",
+            "aiDev": "KI-gestützte Entwicklung",
+            "electronics": "Elektronikreparatur (Komponentenebene)",
+            "circuit": "Schaltungsdiagnose",
+            "soldering": "Löten & Rework",
+            "embedded": "Embedded-Hardware-Grundlagen",
+            "mechatronische": "Mechatronische Systeme",
+            "problemSolving": "Problemlösung",
+            "collaboration": "Teamarbeit",
+            "communication": "Kommunikation",
+            "timeManagement": "Zeitmanagement",
+            "adaptability": "Anpassungsfähigkeit",
+            "criticalThinking": "Kritisches Denken"
+        }
+    },
+    "projects": {
+        "title": "Projekte",
+        "viewCode": "Code ansehen",
+        "liveDemo": "Live-Demo",
+        "items": {
+            "p1": {
+                "title": "Projekt 1",
+                "desc": "Eine kurze Beschreibung deines ersten Projekts und seiner Hauptmerkmale."
+            },
+            "p2": {
+                "title": "Projekt 2",
+                "desc": "Beschreibung deines zweiten Projekts, die seine einzigartigen Aspekte hervorhebt."
+            },
+            "p3": {
+                "title": "Projekt 3",
+                "desc": "Überblick über dein drittes Projekt und seine Hauptfunktionen."
+            }
+        }
+    },
+    "contact": {
+        "title": "Kontakt aufnehmen",
+        "info": "Kontaktinformationen",
+        "form": {
+            "name": "Name",
+            "email": "E-Mail",
+            "message": "Nachricht",
+            "send": "Nachricht senden",
+            "success": "Nachricht erfolgreich gesendet!",
+            "fail": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+        }
+    },
+    "lang": {
+        "en": "English",
+        "ar": "العربية",
+        "de": "Deutsch"
+    }
+}

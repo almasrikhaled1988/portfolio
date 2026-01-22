@@ -59,16 +59,16 @@
         "liveDemo": "Live Demo",
         "items": {
             "p1": {
-                "title": "Project 1",
-                "desc": "A brief description of your first project and its key features."
+                "title": "TechWave Shop",
+                "desc": "A full-stack e-commerce solution for electronics featuring user authentication and product management."
             },
             "p2": {
-                "title": "Project 2",
-                "desc": "Description of your second project highlighting its unique aspects."
+                "title": "Pokémon Card Game",
+                "desc": "An interactive multiplayer card game built with Vue 3, featuring real-time mechanics and dynamic visual effects."
             },
             "p3": {
-                "title": "Project 3",
-                "desc": "Overview of your third project and its main functionalities."
+                "title": "PokéDex Universe",
+                "desc": "A detailed Pokémon encyclopedia allowing users to explore stats, evolutions, and abilities of their favorite Pokémon."
             }
         }
     },

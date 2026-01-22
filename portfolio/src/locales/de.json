@@ -59,16 +59,16 @@
         "liveDemo": "Live-Demo",
         "items": {
             "p1": {
-                "title": "Projekt 1",
-                "desc": "Eine kurze Beschreibung deines ersten Projekts und seiner Hauptmerkmale."
+                "title": "TechWave Shop",
+                "desc": "Eine Full-Stack-E-Commerce-Lösung für Elektronik mit Benutzerauthentifizierung und Produktmanagement."
             },
             "p2": {
-                "title": "Projekt 2",
-                "desc": "Beschreibung deines zweiten Projekts, die seine einzigartigen Aspekte hervorhebt."
+                "title": "Pokémon Kartenspiel",
+                "desc": "Ein interaktives Multiplayer-Kartenspiel entwickelt mit Vue 3, mit Echtzeit-Mechaniken und dynamischen visuellen Effekten."
             },
             "p3": {
-                "title": "Projekt 3",
-                "desc": "Überblick über dein drittes Projekt und seine Hauptfunktionen."
+                "title": "PokéDex Universum",
+                "desc": "Eine detaillierte Pokémon-Enzyklopädie, die es Benutzern ermöglicht, Statistiken, Entwicklungen und Fähigkeiten ihrer Lieblings-Pokémon zu erkunden."
             }
         }
     },

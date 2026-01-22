@@ -5,6 +5,13 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   base: '/',
+  server: {
+    allowedHosts: [
+      'portfolio.khaledalmasri.eu',
+      'localhost',
+      '.khaledalmasri.eu'  // Allow all subdomains
+    ]
+  },
   css: {
     devSourcemap: true
   },

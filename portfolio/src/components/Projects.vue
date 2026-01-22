@@ -18,10 +18,7 @@
               </span>
             </div>
             <div class="flex space-x-4 pt-4 rtl:space-x-reverse">
-              <a :href="project.github" target="_blank" rel="noopener"
-                 class="btn-secondary">
-                {{ $t('projects.viewCode') }}
-              </a>
+              
               <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener"
                  class="btn-primary">
                 {{ $t('projects.liveDemo') }}
@@ -44,26 +41,26 @@ const localizedProjects = computed(() => [
   {
     title: t('projects.items.p1.title'),
     description: t('projects.items.p1.desc'),
-    image: '/project1.jpg',
-    technologies: ['Vue.js', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/yourusername/project1',
-    demo: 'https://project1-demo.com'
+    image: '/techwave-shop.png',
+    technologies: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com/khaled1988xaxaxa/techwave-shop',
+    demo: 'https://shop.khaledalmasri.eu'
   },
   {
     title: t('projects.items.p2.title'),
     description: t('projects.items.p2.desc'),
-    image: '/project2.jpg',
-    technologies: ['React', 'Express', 'PostgreSQL'],
-    github: 'https://github.com/yourusername/project2',
-    demo: 'https://project2-demo.com'
+    image: '/pokemon-game.png',
+    technologies: ['Vue.js', 'Pinia', 'TailwindCSS', 'Socket.io'],
+    github: 'https://github.com/khaled1988xaxaxa/pokemon-card-game',
+    demo: 'https://pokegame.khaledalmasri.eu'
   },
   {
     title: t('projects.items.p3.title'),
     description: t('projects.items.p3.desc'),
-    image: '/project3.jpg',
-    technologies: ['TypeScript', 'AWS', 'Docker'],
-    github: 'https://github.com/yourusername/project3',
-    demo: 'https://project2-demo.com'
+    image: '/pokedex-universe.png',
+    technologies: ['Vue.js', 'PokéAPI', 'Chart.js', 'CSS3'],
+    github: 'https://github.com/khaled1988xaxaxa/pokedex-universe',
+    demo: 'https://pokedex.khaledalmasri.eu'
   }
 ])
 </script>

@@ -73,14 +73,14 @@ const form = ref({
 const handleSubmit = async () => {
   try {
     await emailjs.send(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
+      'service_zarud3j',
+      'template_dmnf4q3',
       {
         from_name: form.value.name,
         from_email: form.value.email,
         message: form.value.message
       },
-      'YOUR_PUBLIC_KEY'
+      'Yq2xjkZCwgHBcNII5'
     )
     
     alert(t('contact.form.success'))

@@ -11,10 +11,15 @@
         "name": "Khaled Almasri",
         "subtitle": "Ein leidenschaftlicher Softwareentwickler, der schöne Web-Erlebnisse schafft",
         "viewWork": "Meine Arbeit ansehen",
-        "getInTouch": "Kontakt aufnehmen"
+        "getInTouch": "Kontakt aufnehmen",
+        "available": "Verfügbar für Arbeit",
+        "badge": "Offen für Arbeit",
+        "scroll": "Scrollen"
     },
     "about": {
         "title": "Über mich",
+        "subtitle": "Lerne mich kennen",
+        "photoAlt": "Professionelles Foto",
         "description1": "Ich bin ein leidenschaftlicher Softwareentwickler mit einem starken Fundament in modernen Webtechnologien. Meine Reise in der Technik begann mit der Neugier, wie Dinge im Internet funktionieren, was mich dazu führte, eine Karriere in der Softwareentwicklung einzuschlagen.",
         "description2": "Ich spezialisiere mich auf den Aufbau responsiver und benutzerfreundlicher Webanwendungen mit Fachwissen sowohl in der Frontend- als auch in der Backend-Entwicklung. Ich lerne ständig dazu und bleibe auf dem neuesten Stand der Technik, um die besten Lösungen zu liefern.",
         "description3": "Ich verfüge auch über ein fundiertes Verständnis von Konzepten der Künstlichen Intelligenz, einschließlich Machine-Learning-Workflows, Datenverarbeitung und KI-gestützter Entwicklung. In Verbindung mit meinem Hintergrund in Hardware und Mechatronik schlage ich die Brücke zwischen Software und physischen Systemen, was es mir ermöglicht, intelligente Lösungen für die reale Welt zu bauen.",
@@ -30,8 +35,15 @@
     },
     "skills": {
         "title": "Fähigkeiten",
-        "technical": "Technische Fähigkeiten",
+        "subtitle": "Was ich kann",
+        "technical": "Technisch",
         "soft": "Soft Skills",
+        "focus": "Aktueller Fokus",
+        "categories": {
+            "software": "Software",
+            "ai": "KI & ML",
+            "hardware": "Hardware"
+        },
         "items": {
             "js": "JavaScript",
             "vue": "Vue.js",
@@ -55,8 +67,12 @@
     },
     "projects": {
         "title": "Projekte",
+        "subtitle": "Ausgewählte Arbeiten",
+        "description": "Hier sind einige meiner neuesten Projekte, die meine Fähigkeiten und Leidenschaft für Entwicklung zeigen.",
         "viewCode": "Code ansehen",
         "liveDemo": "Live-Demo",
+        "featured": "Hervorgehoben",
+        "viewAll": "Alle Projekte auf GitHub ansehen",
         "items": {
             "p1": {
                 "title": "TechWave Shop",
@@ -74,19 +90,39 @@
     },
     "contact": {
         "title": "Kontakt aufnehmen",
+        "subtitle": "Lass uns zusammenarbeiten",
+        "description": "Haben Sie ein Projekt im Sinn? Kontaktieren Sie mich gerne. Ich bin immer offen für neue Möglichkeiten.",
         "info": "Kontaktinformationen",
+        "connect": "Mit mir verbinden",
+        "emailLabel": "E-Mail",
+        "locationLabel": "Standort",
+        "location": "Österreich",
+        "availableNow": "Verfügbar für Freelance",
+        "responseTime": "Antwortet normalerweise innerhalb von 24 Stunden",
         "form": {
             "name": "Name",
+            "namePlaceholder": "Ihr Name",
             "email": "E-Mail",
+            "emailPlaceholder": "your@email.com",
+            "subject": "Betreff",
+            "subjectPlaceholder": "Projektanfrage",
             "message": "Nachricht",
+            "messagePlaceholder": "Erzählen Sie mir von Ihrem Projekt...",
             "send": "Nachricht senden",
-            "success": "Nachricht erfolgreich gesendet!",
+            "sending": "Wird gesendet...",
+            "success": "Nachricht erfolgreich gesendet! Ich werde mich bald bei Ihnen melden.",
             "fail": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
         }
+    },
+    "stats": {
+        "years": "Jahre Erfahrung",
+        "projects": "Abgeschlossene Projekte",
+        "technologies": "Technologien"
     },
     "lang": {
         "en": "English",
         "ar": "العربية",
-        "de": "Deutsch"
+        "de": "Deutsch",
+        "select": "Sprache"
     }
 }

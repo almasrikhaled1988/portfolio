@@ -11,10 +11,15 @@
         "name": "Khaled Almasri",
         "subtitle": "A passionate software developer crafting beautiful web experiences",
         "viewWork": "View My Work",
-        "getInTouch": "Get in Touch"
+        "getInTouch": "Get in Touch",
+        "available": "Available for work",
+        "badge": "Open to work",
+        "scroll": "Scroll"
     },
     "about": {
         "title": "About Me",
+        "subtitle": "Get to know me",
+        "photoAlt": "Professional photo",
         "description1": "I'm a passionate software developer with a strong foundation in modern web technologies. My journey in tech started with a curiosity about how things work on the internet, which led me to pursue a career in software development.",
         "description2": "I specialize in building responsive and user-friendly web applications, with expertise in both frontend and backend development. I'm constantly learning and staying up-to-date with the latest technologies to deliver the best solutions.",
         "description3": "I also have a strong understanding of Artificial Intelligence concepts, including machine learning workflows, data processing, and AI-assisted development. Combined with my hardware and mechatronics background, I bridge the gap between software and physical systems, enabling me to build intelligent, real-world solutions.",
@@ -30,8 +35,15 @@
     },
     "skills": {
         "title": "Skills",
-        "technical": "Technical Skills",
+        "subtitle": "What I can do",
+        "technical": "Technical",
         "soft": "Soft Skills",
+        "focus": "Current Focus",
+        "categories": {
+            "software": "Software",
+            "ai": "AI & ML",
+            "hardware": "Hardware"
+        },
         "items": {
             "js": "JavaScript",
             "vue": "Vue.js",
@@ -55,8 +67,12 @@
     },
     "projects": {
         "title": "Projects",
+        "subtitle": "Featured Work",
+        "description": "Here are some of my recent projects that showcase my skills and passion for development.",
         "viewCode": "View Code",
         "liveDemo": "Live Demo",
+        "featured": "Featured",
+        "viewAll": "View All Projects on GitHub",
         "items": {
             "p1": {
                 "title": "TechWave Shop",
@@ -74,19 +90,39 @@
     },
     "contact": {
         "title": "Get in Touch",
+        "subtitle": "Let's work together",
+        "description": "Have a project in mind? Feel free to reach out. I am always open to discussing new opportunities.",
         "info": "Contact Information",
+        "connect": "Connect with me",
+        "emailLabel": "Email",
+        "locationLabel": "Location",
+        "location": "Austria",
+        "availableNow": "Available for freelance",
+        "responseTime": "Usually responds within 24 hours",
         "form": {
             "name": "Name",
+            "namePlaceholder": "Your name",
             "email": "Email",
+            "emailPlaceholder": "your@email.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "Project inquiry",
             "message": "Message",
+            "messagePlaceholder": "Tell me about your project...",
             "send": "Send Message",
-            "success": "Message sent successfully!",
+            "sending": "Sending...",
+            "success": "Message sent successfully! I'll get back to you soon.",
             "fail": "Failed to send message. Please try again."
         }
+    },
+    "stats": {
+        "years": "Years Experience",
+        "projects": "Projects Completed",
+        "technologies": "Technologies"
     },
     "lang": {
         "en": "English",
         "ar": "العربية",
-        "de": "Deutsch"
+        "de": "Deutsch",
+        "select": "Language"
     }
 }

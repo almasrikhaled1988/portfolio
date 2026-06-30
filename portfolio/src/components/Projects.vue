@@ -171,6 +171,26 @@ const { t } = useI18n()
 
 const localizedProjects = computed(() => [
   {
+    id: 4,
+    title: t('projects.items.p4.title'),
+    description: t('projects.items.p4.desc'),
+    image: '/rispulse.png',
+    technologies: ['Vue.js', 'Node.js', 'AI/NLP', 'MongoDB'],
+    github: null,
+    demo: 'https://rispulse.khaledalmasri.eu',
+    featured: true
+  },
+  {
+    id: 5,
+    title: t('projects.items.p5.title'),
+    description: t('projects.items.p5.desc'),
+    image: '/lernheld.png',
+    technologies: ['Vue.js', 'Node.js', 'Gamification', 'MongoDB'],
+    github: null,
+    demo: 'https://lernheld.khaledalmasri.eu',
+    featured: true
+  },
+  {
     id: 1,
     title: t('projects.items.p1.title'),
     description: t('projects.items.p1.desc'),
@@ -178,7 +198,7 @@ const localizedProjects = computed(() => [
     technologies: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
     github: 'https://github.com/khaled1988xaxaxa/techwave-shop',
     demo: 'https://shop.khaledalmasri.eu',
-    featured: true
+    featured: false
   },
   {
     id: 2,

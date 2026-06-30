@@ -14,6 +14,7 @@
         "getInTouch": "Kontakt aufnehmen",
         "available": "Verfügbar für Arbeit",
         "badge": "Offen für Arbeit",
+        "downloadCV": "Lebenslauf",
         "scroll": "Scrollen"
     },
     "about": {
@@ -85,6 +86,14 @@
             "p3": {
                 "title": "PokéDex Universum",
                 "desc": "Eine detaillierte Pokémon-Enzyklopädie, die es Benutzern ermöglicht, Statistiken, Entwicklungen und Fähigkeiten ihrer Lieblings-Pokémon zu erkunden."
+            },
+            "p4": {
+                "title": "RisPulse",
+                "desc": "Eine KI-gestützte Rechtsassistenz-Plattform zum Durchsuchen von Gerichtsentscheidungen, Interpretieren von Rechtsdokumenten und Beantworten juristischer Fragen."
+            },
+            "p5": {
+                "title": "LernHeld",
+                "desc": "Eine gamifizierte Lernplattform, auf der Benutzer Lern-Abenteuer erleben, ihren Fortschritt verfolgen und ihr Wissen erweitern können."
             }
         }
     },

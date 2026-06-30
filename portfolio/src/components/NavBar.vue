@@ -243,6 +243,7 @@ if (locale.value === 'ar') {
 const menuItems = [
   { key: 'nav.about', href: '#about' },
   { key: 'nav.skills', href: '#skills' },
+  { key: 'nav.experience', href: '#experience' },
   { key: 'nav.projects', href: '#projects' },
   { key: 'nav.contact', href: '#contact' }
 ]

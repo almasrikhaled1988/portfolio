@@ -7,6 +7,7 @@ import NavBar from './components/NavBar.vue'
 import Hero from './components/Hero.vue'
 import AboutMe from './components/AboutMe.vue'
 import Skills from './components/Skills.vue'
+import Experience from './components/Experience.vue'
 import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
 
@@ -46,6 +47,7 @@ useHead({
       <Hero />
       <AboutMe />
       <Skills />
+      <Experience />
       <Projects />
       <Contact />
     </main>

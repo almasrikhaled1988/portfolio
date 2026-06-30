@@ -4,6 +4,7 @@
         "about": "About",
         "skills": "Skills",
         "projects": "Projects",
+        "experience": "Experience",
         "contact": "Contact"
     },
     "hero": {
@@ -64,6 +65,60 @@
             "timeManagement": "Time Management",
             "adaptability": "Adaptability",
             "criticalThinking": "Critical Thinking"
+        }
+    },
+    "experience": {
+        "title": "Experience",
+        "subtitle": "Career Path",
+        "languages": "Languages",
+        "certifications": "Certifications & Tools",
+        "items": {
+            "e1": {
+                "period": "02/2024 – Present",
+                "title": "Full Stack Developer (Training)",
+                "company": "Codersbay Vienna",
+                "desc": "Full-stack web development training with focus on modern frameworks, APIs, databases, and AI-assisted development."
+            },
+            "e2": {
+                "period": "08/2022 – Present",
+                "title": "Mechatronics Technician",
+                "company": "Schneider Electric, Vienna",
+                "desc": "Working in automation and mechatronics, maintaining and developing industrial systems and automation technology."
+            },
+            "e3": {
+                "period": "01/2021 – 09/2022",
+                "title": "Mobile Device Technician (Part-time)",
+                "company": "Luxus Handy, Vienna",
+                "desc": "Component-level repair of smartphones and electronics, diagnostics, soldering, and customer service."
+            },
+            "e4": {
+                "period": "01/2021 & 03–12/2020",
+                "title": "Mechatronics / Electrical Technician",
+                "company": "ÖBB & Elin, Vienna",
+                "desc": "Electrical installations and mechatronics work for Austrian Federal Railways and industrial construction projects."
+            },
+            "e5": {
+                "period": "06/2012 – 05/2015",
+                "title": "Owner & Technician",
+                "company": "Computer & Mobile Shop, Syria/Lebanon",
+                "desc": "Owned a retail business selling and repairing mobile phones and computers, including satellite and software installations."
+            }
+        },
+        "lang": {
+            "arabic": "Arabic",
+            "arabicLevel": "Native",
+            "german": "German",
+            "germanLevel": "B2 Certified",
+            "english": "English",
+            "englishLevel": "Fluent"
+        },
+        "certs": {
+            "ecdl": "ECDL Advanced Expert",
+            "mechatronics": "Mechatronics (Distinction)",
+            "sps": "SPS / TIA Portal",
+            "eplan": "EPLAN",
+            "autocad": "AutoCAD",
+            "arduino": "Arduino & Raspberry Pi"
         }
     },
     "projects": {

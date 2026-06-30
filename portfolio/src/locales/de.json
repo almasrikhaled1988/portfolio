@@ -4,6 +4,7 @@
         "about": "Über mich",
         "skills": "Fähigkeiten",
         "projects": "Projekte",
+        "experience": "Erfahrung",
         "contact": "Kontakt"
     },
     "hero": {
@@ -64,6 +65,60 @@
             "timeManagement": "Zeitmanagement",
             "adaptability": "Anpassungsfähigkeit",
             "criticalThinking": "Kritisches Denken"
+        }
+    },
+    "experience": {
+        "title": "Berufserfahrung",
+        "subtitle": "Karriereweg",
+        "languages": "Sprachen",
+        "certifications": "Zertifikate & Tools",
+        "items": {
+            "e1": {
+                "period": "02/2024 – Laufend",
+                "title": "Full Stack Entwickler (Ausbildung)",
+                "company": "Codersbay Vienna",
+                "desc": "Berufsbegleitende Ausbildung in Full-Stack-Webentwicklung mit Fokus auf moderne Frameworks, APIs, Datenbanken und KI-gestützte Entwicklung."
+            },
+            "e2": {
+                "period": "08/2022 – Laufend",
+                "title": "Mechatroniker",
+                "company": "Schneider Electric, Wien",
+                "desc": "Arbeiten in der Automatisierung und Mechatronik, Wartung und Entwicklung industrieller Systeme und Automatisierungstechnik."
+            },
+            "e3": {
+                "period": "01/2021 – 09/2022",
+                "title": "Handy-Techniker (Teilzeit)",
+                "company": "Luxus Handy, Wien",
+                "desc": "Reparatur von Smartphones und Elektronik auf Komponentenebene, Diagnose, Löten und Kundenservice."
+            },
+            "e4": {
+                "period": "01/2021 & 03–12/2020",
+                "title": "Mechatroniker / Elektrotechniker",
+                "company": "ÖBB & Elin, Wien",
+                "desc": "Elektrische Installationen und Mechatronik-Arbeiten für die Österreichischen Bundesbahnen und industrielle Bauprojekte."
+            },
+            "e5": {
+                "period": "06/2012 – 05/2015",
+                "title": "Inhaber & Techniker",
+                "company": "Computer- & Handygeschäft, Syrien/Libanon",
+                "desc": "Eigenes Einzelhandelsunternehmen für Verkauf und Reparatur von Mobiltelefonen und Computern, einschließlich Satelliten- und Softwareinstallationen."
+            }
+        },
+        "lang": {
+            "arabic": "Arabisch",
+            "arabicLevel": "Muttersprache",
+            "german": "Deutsch",
+            "germanLevel": "B2 Zertifiziert",
+            "english": "Englisch",
+            "englishLevel": "Verhandlungssicher"
+        },
+        "certs": {
+            "ecdl": "ECDL Advanced Expert",
+            "mechatronics": "Mechatronik (mit gutem Erfolg)",
+            "sps": "SPS / TIA Portal",
+            "eplan": "EPLAN",
+            "autocad": "AutoCAD",
+            "arduino": "Arduino & Raspberry Pi"
         }
     },
     "projects": {

@@ -1,250 +1,160 @@
 <template>
-  <nav 
-    :class="[
-      'fixed w-full z-50 transition-all duration-500',
-      isScrolled 
-        ? 'py-2' 
-        : 'py-4'
-    ]"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Glassmorphism container -->
-      <div 
-        :class="[
-          'flex items-center justify-between rounded-2xl transition-all duration-500',
-          isScrolled 
-            ? 'bg-white/70 dark:bg-dark-800/70 backdrop-blur-xl shadow-glass dark:shadow-glass-dark border border-white/30 dark:border-white/10 px-4 py-2' 
-            : 'bg-transparent px-2 py-3'
-        ]"
-      >
-        <!-- Logo -->
-        <a 
-          href="#home" 
-          class="text-lg font-bold tracking-tight group"
+  <header class="fixed inset-x-0 top-0 z-50">
+    <!-- Background on its own layer: a backdrop-filter on <header> itself would make the header the containing
+         block of the fixed overlay below and squeeze the overlay into the 64px header -->
+    <div aria-hidden="true" class="absolute inset-0 -z-10 border-b border-white/5 bg-surface/75 backdrop-blur-xl" />
+
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <a href="#home" class="text-gradient text-2xl font-bold tracking-tight" @click="setMenu(false)">{{ $t('nav.logo') }}</a>
+
+      <!-- Large screens: everything in one row -->
+      <nav class="hidden items-center gap-1 xl:flex" :aria-label="$t('nav.main')">
+        <a
+          v-for="item in items"
+          :key="item.id"
+          :href="`#${item.id}`"
+          class="nav-item"
+          :class="active === item.id ? 'nav-item-active' : ''"
+          :aria-current="active === item.id ? 'true' : undefined"
         >
-          <span class="bg-gradient-to-r from-primary-600 to-violet-600 bg-clip-text text-transparent">
-            {{ $t('nav.name') }}
-          </span>
+          <component :is="item.icon" class="h-4 w-4" aria-hidden="true" />
+          {{ $t(item.key) }}
         </a>
+        <span class="mx-3 h-6 w-px bg-white/10" aria-hidden="true" />
+        <a :href="links.cv" target="_blank" rel="noopener" class="nav-item">
+          <DocumentTextIcon class="h-4 w-4" aria-hidden="true" />
+          {{ $t('nav.resume') }}
+        </a>
+        <ThemeMenu />
+        <LanguageMenu />
+      </nav>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center gap-1 lg:gap-2">
-          <a 
-            v-for="item in menuItems" 
-            :key="item.href" 
-            :href="item.href"
-            class="relative px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 rounded-xl transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-white/50 dark:hover:bg-white/5 group"
-          >
-            {{ $t(item.key) }}
-            <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-violet-500 rounded-full transition-all duration-300 group-hover:w-4/5" />
-          </a>
-          
-          <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2" />
-          
-          <!-- Language Switcher -->
-          <div class="relative">
-            <button 
-              @click="isLangOpen = !isLangOpen"
-              class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 rounded-xl transition-all duration-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-white/50 dark:hover:bg-white/5"
-            >
-              <span class="uppercase text-xs tracking-wider">{{ locale }}</span>
-              <ChevronDownIcon 
-                class="w-4 h-4 transition-transform duration-300"
-                :class="isLangOpen ? 'rotate-180' : ''"
-              />
-            </button>
-            
-            <!-- Language Dropdown -->
-            <Transition
-              enter-active-class="transition-all duration-200 ease-out"
-              enter-from-class="opacity-0 scale-95 -translate-y-2"
-              enter-to-class="opacity-100 scale-100 translate-y-0"
-              leave-active-class="transition-all duration-150 ease-in"
-              leave-from-class="opacity-100 scale-100 translate-y-0"
-              leave-to-class="opacity-0 scale-95 -translate-y-2"
-            >
-              <div 
-                v-show="isLangOpen"
-                class="absolute top-full mt-2 right-0 min-w-[140px] bg-white/80 dark:bg-dark-800/80 backdrop-blur-xl rounded-xl shadow-glass dark:shadow-glass-dark border border-white/30 dark:border-white/10 overflow-hidden"
-              >
-                <button 
-                  v-for="lang in availableLocales" 
-                  :key="lang"
-                  @click="changeLanguage(lang); isLangOpen = false"
-                  class="w-full flex items-center justify-between px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 transition-all duration-200 hover:bg-primary-50 dark:hover:bg-primary-900/20"
-                  :class="{ 
-                    'bg-gradient-to-r from-primary-500/10 to-violet-500/10 text-primary-600 dark:text-primary-400 font-medium': locale === lang 
-                  }"
-                >
-                  <span>{{ $t(`lang.${lang}`) }}</span>
-                  <CheckIcon v-if="locale === lang" class="w-4 h-4 text-primary-600 dark:text-primary-400" />
-                </button>
-              </div>
-            </Transition>
-          </div>
-
-          <!-- Dark Mode Toggle -->
-          <button 
-            @click="toggleDark()" 
-            class="relative p-2.5 rounded-xl text-slate-600 dark:text-slate-300 transition-all duration-300 hover:bg-white/50 dark:hover:bg-white/5 hover:text-primary-600 dark:hover:text-primary-400"
-            :title="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          >
-            <Transition
-              enter-active-class="transition-all duration-300 ease-out"
-              enter-from-class="opacity-0 rotate-90 scale-0"
-              enter-to-class="opacity-100 rotate-0 scale-100"
-              leave-active-class="transition-all duration-200 ease-in"
-              leave-from-class="opacity-100 rotate-0 scale-100"
-              leave-to-class="opacity-0 -rotate-90 scale-0"
-              mode="out-in"
-            >
-              <SunIcon v-if="isDark" class="w-5 h-5" />
-              <MoonIcon v-else class="w-5 h-5" />
-            </Transition>
-          </button>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="flex items-center gap-1 md:hidden">
-          <button 
-            @click="toggleDark()" 
-            class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 transition-all duration-300 hover:bg-white/50 dark:hover:bg-white/5"
-          >
-            <SunIcon v-if="isDark" class="w-5 h-5" />
-            <MoonIcon v-else class="w-5 h-5" />
-          </button>
-          
-          <button 
-            @click="isOpen = !isOpen" 
-            class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 transition-all duration-300 hover:bg-white/50 dark:hover:bg-white/5"
-          >
-            <Transition
-              enter-active-class="transition-all duration-300 ease-out"
-              enter-from-class="opacity-0 rotate-90 scale-0"
-              enter-to-class="opacity-100 rotate-0 scale-100"
-              leave-active-class="transition-all duration-200 ease-in"
-              leave-from-class="opacity-100 rotate-0 scale-100"
-              leave-to-class="opacity-0 -rotate-90 scale-0"
-              mode="out-in"
-            >
-              <Bars3Icon v-if="!isOpen" class="w-6 h-6" />
-              <XMarkIcon v-else class="w-6 h-6" />
-            </Transition>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <Transition
-        enter-active-class="transition-all duration-300 ease-out"
-        enter-from-class="opacity-0 -translate-y-4"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition-all duration-200 ease-in"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 -translate-y-4"
-      >
-        <div 
-          v-show="isOpen"
-          class="md:hidden mt-2 rounded-2xl bg-white/80 dark:bg-dark-800/80 backdrop-blur-xl shadow-glass dark:shadow-glass-dark border border-white/30 dark:border-white/10 overflow-hidden"
+      <!-- Phones, tablets and small laptops: language, theme, menu button -->
+      <div class="flex items-center gap-1 xl:hidden">
+        <LanguageMenu compact />
+        <ThemeMenu compact />
+        <span class="mx-2 h-6 w-px bg-white/10" aria-hidden="true" />
+        <button
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-200 transition hover:bg-white/5"
+          :aria-expanded="isOpen"
+          aria-controls="mobile-menu"
+          :aria-label="isOpen ? $t('nav.closeMenu') : $t('nav.openMenu')"
+          @click="setMenu(!isOpen)"
         >
-          <div class="p-2 space-y-1">
-            <a 
-              v-for="item in menuItems" 
-              :key="item.href" 
-              :href="item.href"
-              @click="isOpen = false"
-              class="block px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-medium transition-all duration-200 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400"
+          <XMarkIcon v-if="isOpen" class="h-6 w-6" aria-hidden="true" />
+          <Bars3Icon v-else class="h-6 w-6" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Reading progress along the bottom edge of the navbar -->
+    <div
+      aria-hidden="true"
+      class="absolute bottom-0 start-0 h-0.5 w-full origin-left bg-gradient-to-r from-primary to-purple-500 rtl:origin-right rtl:bg-gradient-to-l"
+      :style="{ transform: `scaleX(${progress})` }"
+    />
+
+    <!-- Phone menu: a panel under the navbar, with a dark layer over the page that closes it -->
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-to-class="opacity-0"
+    >
+      <div v-if="isOpen" class="xl:hidden">
+        <div class="fixed inset-x-0 bottom-0 top-16 bg-night-0/60" aria-hidden="true" @click="setMenu(false)" />
+        <div id="mobile-menu" class="absolute inset-x-0 top-full border-b border-white/5 bg-surface/95 px-4 pb-6 pt-3 shadow-2xl shadow-black/50 backdrop-blur-xl sm:px-6">
+          <nav class="mx-auto flex max-w-7xl flex-col gap-1" :aria-label="$t('nav.main')">
+            <a
+              v-for="item in items"
+              :key="item.id"
+              :href="`#${item.id}`"
+              class="flex items-center gap-3 rounded-xl px-4 py-3 text-base transition"
+              :class="active === item.id ? 'bg-primary/10 text-primary' : 'text-slate-200 hover:bg-white/5'"
+              :aria-current="active === item.id ? 'true' : undefined"
+              @click="setMenu(false)"
             >
+              <component :is="item.icon" class="h-5 w-5" aria-hidden="true" />
               {{ $t(item.key) }}
             </a>
-            
-            <div class="border-t border-slate-200 dark:border-slate-700 my-2" />
-            
-            <!-- Mobile Language Switcher -->
-            <div class="px-4 py-2">
-              <p class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">{{ $t('lang.select') || 'Language' }}</p>
-              <div class="flex gap-2">
-                <button 
-                  v-for="lang in availableLocales" 
-                  :key="lang"
-                  @click="changeLanguage(lang); isOpen = false"
-                  class="flex-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
-                  :class="locale === lang 
-                    ? 'bg-gradient-to-r from-primary-500 to-violet-500 text-white shadow-glow' 
-                    : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-                  "
-                >
-                  {{ $t(`lang.${lang}`) }}
-                </button>
-              </div>
-            </div>
-          </div>
+            <div class="my-2 h-px bg-white/10" aria-hidden="true" />
+            <a :href="links.cv" target="_blank" rel="noopener" class="flex items-center gap-3 rounded-xl px-4 py-3 text-base text-slate-200 transition hover:bg-white/5">
+              <DocumentTextIcon class="h-5 w-5" aria-hidden="true" />
+              {{ $t('nav.resume') }}
+            </a>
+          </nav>
         </div>
-      </Transition>
-    </div>
-  </nav>
-  
-  <!-- Click outside to close dropdowns -->
-  <div 
-    v-if="isLangOpen || isOpen" 
-    class="fixed inset-0 z-40"
-    @click="isLangOpen = false; isOpen = false"
-  />
+      </div>
+    </Transition>
+  </header>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useDark, useToggle } from '@vueuse/core'
-import { 
-  SunIcon, 
-  MoonIcon,
-  Bars3Icon,
-  XMarkIcon,
-  ChevronDownIcon,
-  CheckIcon
+import {
+  Bars3Icon, ChatBubbleOvalLeftEllipsisIcon, CodeBracketIcon, DocumentTextIcon, FolderIcon, HomeIcon, UserIcon, XMarkIcon
 } from '@heroicons/vue/24/outline'
+import ThemeMenu from './ThemeMenu.vue'
+import LanguageMenu from './LanguageMenu.vue'
+import { links } from '../data/profile'
 
-const { locale } = useI18n()
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+const items = [
+  { id: 'home', key: 'nav.home', icon: HomeIcon },
+  { id: 'about', key: 'nav.about', icon: UserIcon },
+  { id: 'skills', key: 'nav.skills', icon: CodeBracketIcon },
+  { id: 'projects', key: 'nav.projects', icon: FolderIcon },
+  { id: 'contact', key: 'nav.contact', icon: ChatBubbleOvalLeftEllipsisIcon }
+]
+
 const isOpen = ref(false)
-const isLangOpen = ref(false)
-const isScrolled = ref(false)
+const active = ref('home')
+const progress = ref(0)
 
-const availableLocales = ['en', 'de', 'ar']
-
-// Handle scroll for navbar background
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
+// The page behind the open phone menu doesn't scroll
+const setMenu = (open) => {
+  isOpen.value = open
+  document.documentElement.style.overflow = open ? 'hidden' : ''
 }
 
+let frame = 0
+const handleScroll = () => {
+  if (frame) return
+  frame = requestAnimationFrame(() => {
+    frame = 0
+    const max = document.documentElement.scrollHeight - window.innerHeight
+    progress.value = max > 0 ? Math.min(1, window.scrollY / max) : 0
+  })
+}
+const handleKeydown = (event) => { if (event.key === 'Escape' && isOpen.value) setMenu(false) }
+// The phone menu is hidden from 1280px (Tailwind "xl"): close it when the window gets that wide
+const wideScreen = window.matchMedia('(min-width: 1280px)')
+const handleWideScreen = (event) => { if (event.matches && isOpen.value) setMenu(false) }
+
+// Highlight the menu item of the section that crosses the middle of the screen
+let observer
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll() // Check initial scroll position
+  window.addEventListener('resize', handleScroll, { passive: true })
+  window.addEventListener('keydown', handleKeydown)
+  wideScreen.addEventListener('change', handleWideScreen)
+  handleScroll()
+  observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) if (entry.isIntersecting) active.value = entry.target.id
+  }, { rootMargin: '-45% 0px -50% 0px' })
+  for (const item of items) {
+    const section = document.getElementById(item.id)
+    if (section) observer.observe(section)
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleScroll)
+  window.removeEventListener('keydown', handleKeydown)
+  wideScreen.removeEventListener('change', handleWideScreen)
+  cancelAnimationFrame(frame)
+  observer?.disconnect()
+  if (isOpen.value) setMenu(false)
 })
-
-const changeLanguage = (lang) => {
-  locale.value = lang
-  localStorage.setItem('user-locale', lang)
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
-  document.documentElement.lang = lang
-}
-
-// Set initial direction
-if (locale.value === 'ar') {
-  document.documentElement.dir = 'rtl'
-}
-
-const menuItems = [
-  { key: 'nav.about', href: '#about' },
-  { key: 'nav.skills', href: '#skills' },
-  { key: 'nav.experience', href: '#experience' },
-  { key: 'nav.projects', href: '#projects' },
-  { key: 'nav.contact', href: '#contact' }
-]
 </script>

@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="ocean">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Name - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#020617" />
+    <title>Khaled Almasri – Full-Stack Developer</title>
+    <meta name="description" content="Khaled Almasri: full-stack developer (Vue.js, Node.js) and mechatronics technician in Vienna. Projects, experience and contact." />
+    <meta name="author" content="Khaled Almasri" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://portfolio.khaledalmasri.eu/" />
+
+    <!-- Link previews (LinkedIn, WhatsApp, Slack read these; they don't run JavaScript) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://portfolio.khaledalmasri.eu/" />
+    <meta property="og:title" content="Khaled Almasri – Full-Stack Developer" />
+    <meta property="og:description" content="Full-stack developer (Vue.js, Node.js) and mechatronics technician in Vienna. Projects, experience and contact." />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Apply the saved color theme and text direction before the page paints, so nothing flashes or jumps -->
+    <script>
+      try {
+        var theme = localStorage.getItem('theme');
+        if (/^(ocean|gold|green|silver|purple|red)$/.test(theme)) document.documentElement.dataset.theme = theme;
+        if (localStorage.getItem('user-locale') === 'ar') {
+          document.documentElement.dir = 'rtl';
+          document.documentElement.lang = 'ar';
+        }
+      } catch (e) {}
+    </script>
+    <!-- Fonts are self-hosted from npm packages (imported in src/main.js), no Google Fonts request -->
   </head>
-  <body class="bg-white dark:bg-gray-900">
+  <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -1,75 +1,71 @@
 {
+    "meta": {
+        "title": "Khaled Almasri – Full-Stack Developer",
+        "description": "Khaled Almasri: full-stack developer (Vue.js, Node.js) and mechatronics technician in Vienna. Projects, experience and contact."
+    },
     "nav": {
         "name": "Khaled Almasri",
+        "logo": "Khaled",
+        "main": "Main navigation",
+        "home": "Home",
         "about": "About",
         "skills": "Skills",
         "projects": "Projects",
-        "experience": "Experience",
-        "contact": "Contact"
+        "contact": "Contact",
+        "resume": "Resume",
+        "themes": "Themes",
+        "chooseTheme": "Choose a color theme",
+        "language": "Change language",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
+    },
+    "themes": {
+        "ocean": "Ocean Blue",
+        "gold": "Midnight Gold",
+        "green": "Nature Green",
+        "silver": "Silver Tech",
+        "purple": "Royal Purple",
+        "red": "Crimson Red"
+    },
+    "lang": {
+        "en": "English",
+        "de": "Deutsch",
+        "ar": "العربية"
     },
     "hero": {
-        "greeting": "Hi, I'm",
-        "name": "Khaled Almasri",
-        "subtitle": "A passionate software developer crafting beautiful web experiences",
-        "viewWork": "View My Work",
-        "getInTouch": "Get in Touch",
-        "available": "Available for work",
-        "badge": "Open to work",
-        "downloadCV": "Download CV",
-        "scroll": "Scroll"
+        "badge": "Available for new opportunities",
+        "greeting": "I am",
+        "name": "KHALED",
+        "role": "Full-Stack Developer",
+        "intro": "I'm Khaled, a full-stack developer (Vue, Node.js) and mechatronics technician at Schneider Electric. I turn real problems into simple, fast software.",
+        "cta": "Explore My Work",
+        "github": "GitHub profile",
+        "linkedin": "LinkedIn profile",
+        "email": "Send me an email",
+        "status": "System ready. AI assistant online.",
+        "launch": "Open RisPulse, my AI research assistant for court decisions (opens in a new tab)"
     },
     "about": {
         "title": "About Me",
-        "subtitle": "Get to know me",
-        "photoAlt": "Professional photo",
-        "description1": "I'm a passionate software developer with a strong foundation in modern web technologies. My journey in tech started with a curiosity about how things work on the internet, which led me to pursue a career in software development.",
-        "description2": "I specialize in building responsive and user-friendly web applications, with expertise in both frontend and backend development. I'm constantly learning and staying up-to-date with the latest technologies to deliver the best solutions.",
-        "description3": "I also have a strong understanding of Artificial Intelligence concepts, including machine learning workflows, data processing, and AI-assisted development. Combined with my hardware and mechatronics background, I bridge the gap between software and physical systems, enabling me to build intelligent, real-world solutions.",
-        "educationTitle": "Education & Expertise",
-        "edu1Title": "Full Stack Web Developer (Apprenticeship)",
-        "edu1Sub": "Vocational Education & Training (VET), Austria",
-        "edu1Desc": "Frontend & backend development, APIs, databases, and modern web technologies.",
-        "edu2Title": "Mechatronics Engineering Technician (Apprenticeship)",
-        "edu2Sub": "Vocational Education & Training (VET), Austria",
-        "edu2Desc": "Hardware systems, electronics, automation, troubleshooting, and industrial technology.",
-        "edu3Title": "Artificial Intelligence & Machine Learning (Self-Study / Practical Experience)",
-        "edu3Desc": "AI fundamentals, model usage, automation, prompt engineering, and AI-assisted development workflows."
-    },
-    "skills": {
-        "title": "Skills",
-        "subtitle": "What I can do",
-        "technical": "Technical",
-        "soft": "Soft Skills",
-        "focus": "Current Focus",
-        "categories": {
-            "software": "Software",
-            "ai": "AI & ML",
-            "hardware": "Hardware"
-        },
-        "items": {
-            "js": "JavaScript",
-            "vue": "Vue.js",
-            "node": "Node.js",
-            "python": "Python",
-            "java": "Java",
-            "ai": "Artificial Intelligence (AI)",
-            "aiDev": "AI-assisted Development",
-            "electronics": "Electronics Repair (Component-Level)",
-            "circuit": "Circuit Diagnostics",
-            "soldering": "Soldering & Rework",
-            "embedded": "Embedded Hardware Basics",
-            "mechatronics": "Mechatronics Systems",
-            "problemSolving": "Problem Solving",
-            "collaboration": "Team Collaboration",
-            "communication": "Communication",
-            "timeManagement": "Time Management",
-            "adaptability": "Adaptability",
-            "criticalThinking": "Critical Thinking"
-        }
+        "subtitle": "From repairing phones to building AI-powered web apps",
+        "photoAlt": "Photo of Khaled Almasri",
+        "basedIn": "Based in",
+        "basedInValue": "Vienna, Austria",
+        "focus": "Focus",
+        "focusValue": "Web apps & AI",
+        "background": "Background",
+        "backgroundValue": "Mechatronics & automation",
+        "downloadCV": "Download CV",
+        "storyTitle": "My Story",
+        "story1Title": "Hardware first.",
+        "story1Text": "I started out repairing phones and computers in my own shop, then trained as a mechatronics technician in Austria. Today I work in automation at Schneider Electric in Vienna.",
+        "story2Title": "Then, software.",
+        "story2Text": "I wanted to build things people use every day, so I started full-stack training at Codersbay Vienna: Vue, Node.js, APIs and databases.",
+        "story3Title": "Now, AI on the web.",
+        "story3Text": "I build web apps with AI inside, like RisPulse, a research assistant for Austrian court decisions. Knowing hardware helps me understand how real systems behave.",
+        "experienceTitle": "Experience"
     },
     "experience": {
-        "title": "Experience",
-        "subtitle": "Career Path",
         "languages": "Languages",
         "certifications": "Certifications & Tools",
         "items": {
@@ -121,14 +117,71 @@
             "arduino": "Arduino & Raspberry Pi"
         }
     },
+    "skills": {
+        "title": "Technical Expertise",
+        "subtitle": "The tools I use to build web apps, AI features and industrial systems",
+        "categories": {
+            "software": "Software Development",
+            "ai": "AI & Machine Learning",
+            "hardware": "Hardware & Automation"
+        },
+        "items": {
+            "vue": "Vue.js",
+            "js": "JavaScript",
+            "ts": "TypeScript",
+            "node": "Node.js",
+            "express": "Express",
+            "mongodb": "MongoDB",
+            "tailwind": "Tailwind CSS",
+            "html": "HTML & CSS",
+            "git": "Git & GitHub",
+            "python": "Python",
+            "java": "Java",
+            "ai": "Artificial Intelligence (AI)",
+            "aiDev": "AI-assisted Development",
+            "rag": "RAG & LLM apps",
+            "prompt": "Prompt engineering",
+            "mechatronics": "Mechatronics Systems",
+            "sps": "SPS / TIA Portal",
+            "eplan": "EPLAN",
+            "electronics": "Electronics Repair (Component-Level)",
+            "circuit": "Circuit Diagnostics",
+            "soldering": "Soldering & Rework",
+            "embedded": "Embedded Hardware Basics",
+            "autocad": "AutoCAD",
+            "arduino": "Arduino & Raspberry Pi"
+        },
+        "learning": "Continuous learning & development"
+    },
     "projects": {
-        "title": "Projects",
-        "subtitle": "Featured Work",
-        "description": "Here are some of my recent projects that showcase my skills and passion for development.",
-        "viewCode": "View Code",
-        "liveDemo": "Live Demo",
-        "featured": "Featured",
-        "viewAll": "View All Projects on GitHub",
+        "title": "Featured Projects",
+        "subtitle": "Web apps I designed, built and put online",
+        "search": "Search projects...",
+        "filters": "Filters",
+        "type": "Project type",
+        "technology": "Technology",
+        "clear": "Clear filters",
+        "empty": "No project matches your search.",
+        "viewDetails": "View Details",
+        "description": "Description",
+        "technologies": "Technologies",
+        "info": "Project info",
+        "status": "Status",
+        "live": "Live",
+        "source": "Source code",
+        "openSource": "Public on GitHub",
+        "private": "Private repository",
+        "livePreview": "Live Preview",
+        "viewSource": "View Source",
+        "close": "Close",
+        "moreOnGithub": "More projects on GitHub",
+        "categories": {
+            "ai": "AI App",
+            "education": "Learning Platform",
+            "ecommerce": "E-commerce",
+            "game": "Game",
+            "webapp": "Web App"
+        },
         "items": {
             "p1": {
                 "title": "TechWave Shop",
@@ -153,24 +206,26 @@
         }
     },
     "contact": {
-        "title": "Get in Touch",
-        "subtitle": "Let's work together",
-        "description": "Have a project in mind? Feel free to reach out. I am always open to discussing new opportunities.",
-        "info": "Contact Information",
-        "connect": "Connect with me",
-        "emailLabel": "Email",
-        "locationLabel": "Location",
-        "location": "Austria",
-        "availableNow": "Available for freelance",
-        "responseTime": "Usually responds within 24 hours",
+        "title": "Contact Information",
+        "subtitle": "Available for new opportunities and collaborations",
+        "getInTouch": "Get In Touch",
+        "sendMessage": "Send a Message",
+        "email": "Email",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "linkedinValue": "Let's connect",
+        "location": "Location",
+        "locationValue": "Vienna, Austria",
+        "cv": "Resume",
+        "cvValue": "Download PDF",
         "form": {
-            "name": "Name",
+            "name": "Full Name",
             "namePlaceholder": "Your name",
-            "email": "Email",
-            "emailPlaceholder": "your@email.com",
+            "email": "Email Address",
+            "emailPlaceholder": "your{'@'}email.com",
             "subject": "Subject",
             "subjectPlaceholder": "Project inquiry",
-            "message": "Message",
+            "message": "Your Message",
             "messagePlaceholder": "Tell me about your project...",
             "send": "Send Message",
             "sending": "Sending...",
@@ -178,15 +233,12 @@
             "fail": "Failed to send message. Please try again."
         }
     },
-    "stats": {
-        "years": "Years Experience",
-        "projects": "Projects Completed",
-        "technologies": "Technologies"
-    },
-    "lang": {
-        "en": "English",
-        "ar": "العربية",
-        "de": "Deutsch",
-        "select": "Language"
+    "footer": {
+        "tagline": "Full-stack developer building fast web apps and AI tools, with a background in mechatronics.",
+        "quickLinks": "Quick Links",
+        "connect": "Connect",
+        "rights": "All rights reserved.",
+        "builtWith": "Built with Vue 3 · Vite · Tailwind CSS",
+        "backToTop": "Back to top"
     }
 }

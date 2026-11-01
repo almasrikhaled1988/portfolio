@@ -1,36 +1,26 @@
 <script setup>
 import { useHead } from '@vueuse/head'
-import { useDark, useToggle } from '@vueuse/core'
-import { watch, computed } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NavBar from './components/NavBar.vue'
 import Hero from './components/Hero.vue'
 import AboutMe from './components/AboutMe.vue'
 import Skills from './components/Skills.vue'
-import Experience from './components/Experience.vue'
 import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
+import SiteFooter from './components/SiteFooter.vue'
+import BackToTop from './components/BackToTop.vue'
 
 const { t, locale } = useI18n()
 
-// Setup dark mode
-const isDark = useDark({
-  selector: 'html',
-  attribute: 'class',
-  valueDark: 'dark',
-  valueLight: '',
-})
-const toggleDark = useToggle(isDark)
-
-// Setup meta tags reactively
+// Meta tags follow the language (index.html has static English defaults for link previews)
 useHead({
-  title: computed(() => `${t('nav.name')} - ${t('nav.projects')}`),
+  title: computed(() => t('meta.title')),
   meta: [
-    { name: 'description', content: computed(() => t('hero.subtitle')) },
-    { name: 'keywords', content: 'software developer, web development, portfolio, projects' },
+    { name: 'description', content: computed(() => t('meta.description')) },
     { name: 'author', content: computed(() => t('nav.name')) },
-    { property: 'og:title', content: computed(() => `${t('nav.name')} - ${t('nav.projects')}`) },
-    { property: 'og:description', content: computed(() => t('hero.subtitle')) },
+    { property: 'og:title', content: computed(() => t('meta.title')) },
+    { property: 'og:description', content: computed(() => t('meta.description')) },
     { property: 'og:type', content: 'website' }
   ],
   htmlAttrs: {
@@ -41,15 +31,16 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-gray-900">
+  <div class="relative min-h-screen overflow-x-clip text-slate-50">
     <NavBar />
-    <main class="pt-16">
+    <main>
       <Hero />
       <AboutMe />
       <Skills />
-      <Experience />
       <Projects />
       <Contact />
     </main>
+    <SiteFooter />
+    <BackToTop />
   </div>
 </template>

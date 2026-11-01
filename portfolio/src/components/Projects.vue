@@ -1,224 +1,205 @@
 <template>
-  <section id="projects" class="py-24 relative overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900" />
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-      <div class="absolute top-1/3 right-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl" />
-      <div class="absolute bottom-1/3 left-0 w-80 h-80 bg-primary-500/5 rounded-full blur-3xl" />
-    </div>
-    
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div 
-        v-motion
-        :initial="{ opacity: 0, y: 30 }"
-        :visible="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 800 }"
-        class="text-center mb-16"
-      >
-        <span class="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 rounded-full">
-          {{ $t('projects.subtitle') || 'Featured Work' }}
-        </span>
-        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          <span class="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-            {{ $t('projects.title') }}
-          </span>
-        </h2>
-        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          {{ $t('projects.description') || 'Here are some of my recent projects that showcase my skills and passion for development.' }}
-        </p>
+  <section id="projects" class="section-bg relative py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading :icon="RocketLaunchIcon" icon-class="text-purple-400" :title="$t('projects.title')" :subtitle="$t('projects.subtitle')" />
+
+      <!-- Search and filters -->
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <label class="relative flex-1">
+          <span class="sr-only">{{ $t('projects.search') }}</span>
+          <MagnifyingGlassIcon class="pointer-events-none absolute start-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" aria-hidden="true" />
+          <input
+            v-model="query"
+            type="search"
+            :placeholder="$t('projects.search')"
+            class="h-14 w-full rounded-2xl border border-white/10 bg-surface/40 pe-5 ps-14 text-base text-slate-100 transition placeholder:text-slate-500 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
+          >
+        </label>
+        <button
+          type="button"
+          class="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border px-6 font-medium transition"
+          :class="showFilters || activeCount ? 'border-primary/40 bg-primary/10 text-primary' : 'border-white/10 bg-surface/40 text-slate-200 hover:border-white/20'"
+          :aria-expanded="showFilters"
+          aria-controls="project-filters"
+          @click="showFilters = !showFilters"
+        >
+          <FunnelIcon class="h-5 w-5" aria-hidden="true" />
+          {{ $t('projects.filters') }}
+          <span v-if="activeCount" class="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-primary px-1.5 text-xs font-bold text-night-0">{{ activeCount }}</span>
+        </button>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          v-for="(project, index) in localizedProjects"
+      <Transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="-translate-y-2 opacity-0"
+        leave-active-class="transition duration-150 ease-in"
+        leave-to-class="-translate-y-2 opacity-0"
+      >
+        <div v-show="showFilters" id="project-filters" class="mt-4 rounded-2xl border border-white/10 bg-surface/40 p-6">
+          <fieldset>
+            <legend class="flex items-center gap-2 text-sm font-semibold text-slate-300">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+              {{ $t('projects.type') }}
+            </legend>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <button
+                v-for="category in categories"
+                :key="category"
+                type="button"
+                class="rounded-xl border px-4 py-2 text-sm transition"
+                :class="types.includes(category) ? 'border-primary/50 bg-primary/15 text-primary' : 'border-white/10 bg-night-0/40 text-slate-200 hover:border-white/25'"
+                :aria-pressed="types.includes(category)"
+                @click="toggle(types, category)"
+              >
+                {{ $t(`projects.categories.${category}`) }}
+              </button>
+            </div>
+          </fieldset>
+          <fieldset class="mt-6">
+            <legend class="flex items-center gap-2 text-sm font-semibold text-slate-300">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+              {{ $t('projects.technology') }}
+            </legend>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <button
+                v-for="tech in technologies"
+                :key="tech"
+                type="button"
+                class="rounded-xl border px-4 py-2 text-sm transition"
+                :class="techs.includes(tech) ? 'border-primary/50 bg-primary/15 text-primary' : 'border-white/10 bg-night-0/40 text-slate-200 hover:border-white/25'"
+                :aria-pressed="techs.includes(tech)"
+                @click="toggle(techs, tech)"
+              >
+                {{ tech }}
+              </button>
+            </div>
+          </fieldset>
+          <button v-if="activeCount" type="button" class="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline" @click="clearFilters">
+            <XMarkIcon class="h-4 w-4" aria-hidden="true" />
+            {{ $t('projects.clear') }}
+          </button>
+        </div>
+      </Transition>
+
+      <!-- Project cards: the whole card opens the details window -->
+      <ul class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <li
+          v-for="(project, index) in filtered"
           :key="project.id"
           v-motion
-          :initial="{ opacity: 0, y: 40 }"
-          :visible="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 600, delay: 200 + (index * 150) }"
-          class="group relative"
+          :initial="{ opacity: 0, y: 32 }"
+          :visible-once="{ opacity: 1, y: 0 }"
+          :delay="(index % 3) * 100"
+          :duration="600"
         >
-          <!-- Card -->
-          <div class="relative h-full rounded-3xl bg-white/60 dark:bg-dark-800/60 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-glass dark:shadow-glass-dark overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-glow-lg">
-            <!-- Image Container -->
-            <div class="relative h-56 overflow-hidden">
-              <img 
-                :src="project.image" 
-                :alt="project.title" 
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          <article class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-surface/50 transition duration-300 focus-within:border-primary/50 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_0_40px_-8px_rgb(var(--primary)/0.4)]">
+            <div class="relative aspect-[16/10] overflow-hidden bg-night-0">
+              <img
+                :src="project.image"
+                alt=""
+                :width="project.imageSize[0]"
+                :height="project.imageSize[1]"
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
               >
-              <!-- Overlay on hover -->
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <!-- Quick actions on hover -->
-              <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                <a
-                  v-if="project.github"
-                  :href="project.github"
-                  target="_blank"
-                  rel="noopener"
-                  class="p-3 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
-                  :title="$t('projects.viewCode')"
-                >
-                  <CodeBracketIcon class="w-6 h-6" />
-                </a>
-                <a
-                  v-if="project.demo"
-                  :href="project.demo"
-                  target="_blank"
-                  rel="noopener"
-                  class="p-3 rounded-xl bg-gradient-to-r from-primary-500 to-violet-500 text-white hover:shadow-glow transition-all duration-300 hover:scale-110"
-                  :title="$t('projects.liveDemo')"
-                >
-                  <EyeIcon class="w-6 h-6" />
-                </a>
-              </div>
-
-              <!-- Featured badge -->
-              <div v-if="project.featured" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r from-primary-500 to-violet-500 text-white text-xs font-semibold shadow-glow">
-                {{ $t('projects.featured') || 'Featured' }}
-              </div>
-            </div>
-
-            <!-- Content -->
-            <div class="p-6 rtl:text-right">
-              <div class="flex items-start justify-between gap-4 mb-3">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                  {{ project.title }}
-                </h3>
-              </div>
-              
-              <p class="text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
-                {{ project.description }}
-              </p>
-
-              <!-- Tech stack -->
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span
-                  v-for="tech in project.technologies"
-                  :key="tech"
-                  class="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 transition-colors duration-300 hover:border-primary-400 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                >
-                  {{ tech }}
+              <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center bg-night-0/60 opacity-0 backdrop-blur-[3px] transition duration-300 group-focus-within:opacity-100 group-hover:opacity-100">
+                <span class="inline-flex translate-y-2 items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-night-0 shadow-lg transition duration-300 group-hover:translate-y-0">
+                  <EyeIcon class="h-5 w-5" />
+                  {{ $t('projects.viewDetails') }}
                 </span>
               </div>
-
-              <!-- Action buttons -->
-              <div class="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-slate-700 rtl:flex-row-reverse">
-                <a
-                  v-if="project.demo"
-                  :href="project.demo"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary-500 to-violet-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <EyeIcon class="w-4 h-4" />
-                  {{ $t('projects.liveDemo') }}
-                </a>
-                <a
-                  v-if="project.github"
-                  :href="project.github"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary-400 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <CodeBracketIcon class="w-4 h-4" />
-                  <span class="hidden sm:inline">{{ $t('projects.viewCode') }}</span>
-                </a>
-              </div>
+              <span class="absolute end-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-night-0/80 px-3 py-1 text-xs font-medium text-slate-100 backdrop-blur">
+                <Square3Stack3DIcon class="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                {{ $t(`projects.categories.${project.category}`) }}
+              </span>
             </div>
-          </div>
-        </div>
-      </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-xl font-bold text-slate-50 transition-colors group-hover:text-primary">
+                <button type="button" class="text-start after:absolute after:inset-0 after:content-[''] focus:outline-none" aria-haspopup="dialog" @click="selected = project">
+                  {{ $t(`projects.items.${project.id}.title`) }}
+                </button>
+              </h3>
+              <p class="mt-3 line-clamp-3 text-[15px] leading-relaxed text-slate-400">{{ $t(`projects.items.${project.id}.desc`) }}</p>
+              <ul class="mt-auto flex flex-wrap gap-2 pt-5">
+                <li v-for="tech in project.tech.slice(0, 3)" :key="tech" class="tag">{{ tech }}</li>
+                <li v-if="project.tech.length > 3" class="tag-muted">+{{ project.tech.length - 3 }}</li>
+              </ul>
+            </div>
+          </article>
+        </li>
+      </ul>
 
-      <!-- View All CTA -->
-      <div 
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visible="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 600, delay: 800 }"
-        class="text-center mt-16"
-      >
-        <a 
-          href="https://github.com/khaled1988xaxaxa" 
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white/60 dark:bg-dark-800/60 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-glass dark:shadow-glass-dark text-slate-700 dark:text-slate-200 font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-          </svg>
-          {{ $t('projects.viewAll') || 'View All Projects on GitHub' }}
-          <ArrowTopRightOnSquareIcon class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+      <p v-if="!filtered.length" class="mt-12 rounded-2xl border border-dashed border-white/10 p-10 text-center text-slate-400" role="status">
+        {{ $t('projects.empty') }}
+        <button type="button" class="ms-2 font-medium text-primary hover:underline" @click="resetAll">{{ $t('projects.clear') }}</button>
+      </p>
+
+      <div class="mt-16 text-center">
+        <a :href="links.github" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-slate-400 transition hover:text-primary">
+          <ArrowTopRightOnSquareIcon class="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
+          {{ $t('projects.moreOnGithub') }}
         </a>
       </div>
     </div>
+
+    <ProjectModal :project="selected" @close="selected = null" />
   </section>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { 
-  CodeBracketIcon, 
-  EyeIcon, 
-  ArrowTopRightOnSquareIcon 
+import {
+  ArrowTopRightOnSquareIcon, EyeIcon, FunnelIcon, MagnifyingGlassIcon, RocketLaunchIcon, Square3Stack3DIcon, XMarkIcon
 } from '@heroicons/vue/24/outline'
+import SectionHeading from './SectionHeading.vue'
+import ProjectModal from './ProjectModal.vue'
+import { projects, links } from '../data/profile'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
-const localizedProjects = computed(() => [
-  {
-    id: 4,
-    title: t('projects.items.p4.title'),
-    description: t('projects.items.p4.desc'),
-    image: '/rispulse.png',
-    technologies: ['Vue.js', 'Node.js', 'AI/NLP', 'MongoDB'],
-    github: null,
-    demo: 'https://rispulse.khaledalmasri.eu',
-    featured: true
-  },
-  {
-    id: 5,
-    title: t('projects.items.p5.title'),
-    description: t('projects.items.p5.desc'),
-    image: '/lernheld.png',
-    technologies: ['Vue.js', 'Node.js', 'Gamification', 'MongoDB'],
-    github: null,
-    demo: 'https://lernheld.khaledalmasri.eu',
-    featured: true
-  },
-  {
-    id: 1,
-    title: t('projects.items.p1.title'),
-    description: t('projects.items.p1.desc'),
-    image: '/techwave-shop.png',
-    technologies: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/khaled1988xaxaxa/techwave-shop',
-    demo: 'https://shop.khaledalmasri.eu',
-    featured: false
-  },
-  {
-    id: 2,
-    title: t('projects.items.p2.title'),
-    description: t('projects.items.p2.desc'),
-    image: '/pokemon-game.png',
-    technologies: ['Vue.js', 'Pinia', 'TailwindCSS', 'Socket.io'],
-    github: 'https://github.com/khaled1988xaxaxa/pokemon-card-game',
-    demo: 'https://pokegame.khaledalmasri.eu',
-    featured: false
-  },
-  {
-    id: 3,
-    title: t('projects.items.p3.title'),
-    description: t('projects.items.p3.desc'),
-    image: '/pokedex-universe.png',
-    technologies: ['Vue.js', 'PokéAPI', 'Chart.js', 'CSS3'],
-    github: 'https://github.com/khaled1988xaxaxa/pokedex-universe',
-    demo: 'https://pokedex.khaledalmasri.eu',
-    featured: false
-  }
-])
+const query = ref('')
+const showFilters = ref(false)
+const types = ref([])
+const techs = ref([])
+const selected = ref(null)
+
+const categories = [...new Set(projects.map((project) => project.category))]
+const technologies = [...new Set(projects.flatMap((project) => project.tech))]
+const activeCount = computed(() => types.value.length + techs.value.length)
+
+const toggle = (list, value) => {
+  const index = list.indexOf(value)
+  if (index === -1) list.push(value)
+  else list.splice(index, 1)
+}
+const clearFilters = () => {
+  types.value = []
+  techs.value = []
+}
+const resetAll = () => {
+  clearFilters()
+  query.value = ''
+}
+
+// Lowercase without accents, so "pokemon" also finds "Pokémon"
+const simplify = (text) => text.toLocaleLowerCase(locale.value).normalize('NFD').replace(/\p{Diacritic}/gu, '')
+
+// A project shows when it matches the search text, one of the chosen types and one of the chosen technologies
+const filtered = computed(() => {
+  const search = simplify(query.value.trim())
+  return projects.filter((project) => {
+    if (types.value.length && !types.value.includes(project.category)) return false
+    if (techs.value.length && !project.tech.some((tech) => techs.value.includes(tech))) return false
+    if (!search) return true
+    const text = [
+      t(`projects.items.${project.id}.title`),
+      t(`projects.items.${project.id}.desc`),
+      t(`projects.categories.${project.category}`),
+      ...project.tech
+    ].join(' ')
+    return simplify(text).includes(search)
+  })
+})
 </script>

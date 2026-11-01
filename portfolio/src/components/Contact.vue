@@ -1,315 +1,148 @@
 <template>
-  <section id="contact" class="py-24 relative overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0 bg-slate-50 dark:bg-dark-900">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.08),transparent_50%)]" />
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(139,92,246,0.08),transparent_50%)]" />
-    </div>
-    
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div 
-        v-motion
-        :initial="{ opacity: 0, y: 30 }"
-        :visible="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 800 }"
-        class="text-center mb-16"
-      >
-        <span class="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 rounded-full">
-          {{ $t('contact.subtitle') || "Let's work together" }}
-        </span>
-        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          <span class="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-            {{ $t('contact.title') }}
-          </span>
-        </h2>
-        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          {{ $t('contact.description') || 'Have a project in mind? Feel free to reach out. I am always open to discussing new opportunities.' }}
-        </p>
-      </div>
+  <section id="contact" class="section-bg relative py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading :icon="EnvelopeIcon" :badge="CodeBracketIcon" :title="$t('contact.title')" :subtitle="$t('contact.subtitle')" />
 
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-        <!-- Contact Info -->
-        <div 
-          v-motion
-          :initial="{ opacity: 0, x: -30 }"
-          :visible="{ opacity: 1, x: 0 }"
-          :transition="{ duration: 800, delay: 200 }"
-          class="lg:col-span-2 space-y-6 rtl:text-right"
-        >
-          <!-- Info Cards -->
-          <div class="p-6 rounded-2xl bg-white/60 dark:bg-dark-800/60 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-glass dark:shadow-glass-dark">
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3 rtl:flex-row-reverse">
-              <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-violet-500 flex items-center justify-center text-white">
-                <ChatBubbleLeftRightIcon class="w-5 h-5" />
-              </span>
-              {{ $t('contact.info') }}
-            </h3>
-            
-            <div class="space-y-4">
-              <!-- Email -->
-              <a 
-                href="mailto:almasrikhaled1988@gmail.com" 
-                class="group flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-primary-400 dark:hover:border-primary-500 transition-all duration-300 rtl:flex-row-reverse"
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-12">
+        <!-- Direct contact -->
+        <div v-motion :initial="{ opacity: 0, y: 32 }" :visible-once="{ opacity: 1, y: 0 }" :duration="700" class="card self-start p-6 sm:p-8">
+          <h3 class="flex items-center gap-3 text-2xl font-bold text-slate-50">
+            <span class="h-7 w-1 rounded-full bg-primary" aria-hidden="true" />
+            {{ $t('contact.getInTouch') }}
+          </h3>
+          <ul class="mt-8 space-y-4">
+            <li v-for="item in items" :key="item.key">
+              <component
+                :is="item.href ? 'a' : 'div'"
+                :href="item.href"
+                :target="item.external ? '_blank' : undefined"
+                :rel="item.external ? 'noopener' : undefined"
+                :download="item.download ? '' : undefined"
+                class="flex items-center gap-4 rounded-xl border border-white/5 bg-white/[0.03] p-4 transition"
+                :class="item.href ? 'hover:border-primary/30 hover:bg-white/[0.06]' : ''"
               >
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                  <EnvelopeIcon class="w-6 h-6" />
-                </div>
-                <div class="flex-1 min-w-0">
-                  <p class="text-sm text-slate-500 dark:text-slate-400">{{ $t('contact.emailLabel') || 'Email' }}</p>
-                  <p class="text-slate-700 dark:text-slate-200 font-medium truncate">almasrikhaled1988@gmail.com</p>
-                </div>
-                <ArrowTopRightOnSquareIcon class="w-5 h-5 text-slate-400 group-hover:text-primary-500 transition-colors duration-300" />
-              </a>
-
-              <!-- Location -->
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rtl:flex-row-reverse">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white">
-                  <MapPinIcon class="w-6 h-6" />
-                </div>
-                <div>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">{{ $t('contact.locationLabel') || 'Location' }}</p>
-                  <p class="text-slate-700 dark:text-slate-200 font-medium">{{ $t('contact.location') || 'Austria' }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Social Links -->
-          <div class="p-6 rounded-2xl bg-white/60 dark:bg-dark-800/60 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-glass dark:shadow-glass-dark">
-            <h4 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">{{ $t('contact.connect') || 'Connect with me' }}</h4>
-            <div class="flex gap-3 rtl:flex-row-reverse">
-              <a
-                href="https://github.com/khaled1988xaxaxa"
-                target="_blank"
-                rel="noopener"
-                class="group flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 dark:hover:bg-white transition-all duration-300"
-              >
-                <svg class="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-white dark:group-hover:text-slate-900 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-                </svg>
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-white dark:group-hover:text-slate-900 transition-colors duration-300 hidden sm:inline">GitHub</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/khaled-almasri-8a8b273a5/"
-                target="_blank"
-                rel="noopener"
-                class="group flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#0A66C2]/10 hover:bg-[#0A66C2] transition-all duration-300 border border-[#0A66C2]/20"
-              >
-                <svg class="w-5 h-5 text-[#0A66C2] group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span class="text-sm font-medium text-[#0A66C2] group-hover:text-white transition-colors duration-300 hidden sm:inline">LinkedIn</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Availability -->
-          <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 dark:from-emerald-500/20 dark:to-teal-500/20 border border-emerald-200/30 dark:border-emerald-500/20">
-            <div class="flex items-center gap-3 rtl:flex-row-reverse">
-              <div class="relative">
-                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                <div class="absolute inset-0 w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
-              </div>
-              <div>
-                <p class="font-semibold text-emerald-800 dark:text-emerald-300">{{ $t('contact.availableNow') || 'Available for freelance' }}</p>
-                <p class="text-sm text-emerald-600 dark:text-emerald-400">{{ $t('contact.responseTime') || 'Usually responds within 24 hours' }}</p>
-              </div>
-            </div>
-          </div>
+                <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <BrandIcon v-if="item.brand" :name="item.brand" class="h-5 w-5" />
+                  <component :is="item.icon" v-else class="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span class="min-w-0">
+                  <span class="block text-sm text-slate-400">{{ item.label }}</span>
+                  <!-- <wbr>: on narrow phones the address wraps before the @, not in the middle of a word -->
+                  <span v-if="item.key === 'email'" class="block break-words font-medium text-slate-50" dir="ltr">{{ emailParts[0] }}<wbr>@{{ emailParts[1] }}</span>
+                  <span v-else class="block break-words font-medium text-slate-50" :dir="item.ltr ? 'ltr' : undefined">{{ item.value }}</span>
+                </span>
+              </component>
+            </li>
+          </ul>
         </div>
 
-        <!-- Contact Form -->
-        <div 
+        <!-- Message form (sent with EmailJS) -->
+        <form
           v-motion
-          :initial="{ opacity: 0, x: 30 }"
-          :visible="{ opacity: 1, x: 0 }"
-          :transition="{ duration: 800, delay: 400 }"
-          class="lg:col-span-3"
+          :initial="{ opacity: 0, y: 32 }"
+          :visible-once="{ opacity: 1, y: 0 }"
+          :delay="100"
+          :duration="700"
+          class="card border-primary/20 p-6 sm:p-10"
+          @submit.prevent="handleSubmit"
         >
-          <form @submit.prevent="handleSubmit" class="p-8 rounded-3xl bg-white/60 dark:bg-dark-800/60 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-glass dark:shadow-glass-dark rtl:text-right">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-              <!-- Name -->
-              <div class="relative">
-                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  {{ $t('contact.form.name') }}
-                </label>
-                <div class="relative">
-                  <UserIcon class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 rtl:left-auto rtl:right-4" />
-                  <input
-                    type="text"
-                    id="name"
-                    v-model="form.name"
-                    required
-                    class="w-full pl-12 rtl:pl-4 rtl:pr-12 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none"
-                    :placeholder="$t('contact.form.namePlaceholder') || 'Your name'"
-                  >
-                </div>
-              </div>
-
-              <!-- Email -->
-              <div class="relative">
-                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  {{ $t('contact.form.email') }}
-                </label>
-                <div class="relative">
-                  <EnvelopeIcon class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 rtl:left-auto rtl:right-4" />
-                  <input
-                    type="email"
-                    id="email"
-                    v-model="form.email"
-                    required
-                    class="w-full pl-12 rtl:pl-4 rtl:pr-12 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none"
-                    :placeholder="$t('contact.form.emailPlaceholder') || 'your@email.com'"
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Subject -->
-            <div class="relative mb-6">
-              <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                {{ $t('contact.form.subject') || 'Subject' }}
+          <h3 class="text-2xl font-bold text-slate-50">{{ $t('contact.sendMessage') }}</h3>
+          <div class="mt-8 space-y-5">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="block">
+                <span class="mb-2 block text-sm text-slate-300">{{ $t('contact.form.name') }}</span>
+                <input v-model="form.name" type="text" required autocomplete="name" class="field" :placeholder="$t('contact.form.namePlaceholder')">
               </label>
-              <div class="relative">
-                <DocumentTextIcon class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 rtl:left-auto rtl:right-4" />
-                <input
-                  type="text"
-                  id="subject"
-                  v-model="form.subject"
-                  required
-                  class="w-full pl-12 rtl:pl-4 rtl:pr-12 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none"
-                  :placeholder="$t('contact.form.subjectPlaceholder') || 'Project inquiry'"
-                >
-              </div>
-            </div>
-
-            <!-- Message -->
-            <div class="relative mb-8">
-              <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                {{ $t('contact.form.message') }}
+              <label class="block">
+                <span class="mb-2 block text-sm text-slate-300">{{ $t('contact.form.email') }}</span>
+                <input v-model="form.email" type="email" required autocomplete="email" class="field" :placeholder="$t('contact.form.emailPlaceholder')">
               </label>
-              <div class="relative">
-                <ChatBubbleBottomCenterTextIcon class="absolute left-4 top-4 w-5 h-5 text-slate-400 rtl:left-auto rtl:right-4" />
-                <textarea
-                  id="message"
-                  v-model="form.message"
-                  rows="5"
-                  required
-                  class="w-full pl-12 rtl:pl-4 rtl:pr-12 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 outline-none resize-none"
-                  :placeholder="$t('contact.form.messagePlaceholder') || 'Tell me about your project...'"
-                />
-              </div>
             </div>
+            <label class="block">
+              <span class="mb-2 block text-sm text-slate-300">{{ $t('contact.form.subject') }}</span>
+              <input v-model="form.subject" type="text" required class="field" :placeholder="$t('contact.form.subjectPlaceholder')">
+            </label>
+            <label class="block">
+              <span class="mb-2 block text-sm text-slate-300">{{ $t('contact.form.message') }}</span>
+              <textarea v-model="form.message" rows="6" required class="field resize-none" :placeholder="$t('contact.form.messagePlaceholder')" />
+            </label>
 
-            <!-- Submit Button -->
-            <button
-              type="submit"
-              :disabled="isSubmitting"
-              class="group relative w-full py-4 px-6 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-glow disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-            >
-              <span class="absolute inset-0 bg-gradient-to-r from-primary-600 to-violet-600 transition-transform duration-300 group-hover:scale-105" />
-              <span class="relative flex items-center justify-center gap-2 text-white font-semibold text-lg">
-                <span v-if="isSubmitting" class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                <PaperAirplaneIcon v-else class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                {{ isSubmitting ? $t('contact.form.sending') || 'Sending...' : $t('contact.form.send') }}
-              </span>
+            <!-- Honeypot: hidden from visitors, spam bots tend to fill it -->
+            <input v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
+
+            <button type="submit" :disabled="isSubmitting" class="btn-gradient w-full py-4">
+              <span v-if="isSubmitting" class="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" aria-hidden="true" />
+              <PaperAirplaneIcon v-else class="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />
+              {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.send') }}
             </button>
 
-            <!-- Success/Error Message -->
-            <Transition
-              enter-active-class="transition-all duration-500 ease-out"
-              enter-from-class="opacity-0 translate-y-4"
-              enter-to-class="opacity-100 translate-y-0"
-              leave-active-class="transition-all duration-300 ease-in"
-              leave-from-class="opacity-100 translate-y-0"
-              leave-to-class="opacity-0 translate-y-4"
+            <p
+              v-if="message"
+              role="status"
+              aria-live="polite"
+              class="flex items-center gap-2 rounded-xl border px-4 py-3 text-sm"
+              :class="message.type === 'success' ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-200' : 'border-red-400/30 bg-red-400/10 text-red-200'"
             >
-              <div
-                v-if="message"
-                :class="[
-                  'mt-6 p-4 rounded-xl flex items-center gap-3 rtl:flex-row-reverse',
-                  message.type === 'success' 
-                    ? 'bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-300'
-                    : 'bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-500/30 text-red-800 dark:text-red-300'
-                ]"
-              >
-                <CheckCircleIcon v-if="message.type === 'success'" class="w-5 h-5 flex-shrink-0" />
-                <XCircleIcon v-else class="w-5 h-5 flex-shrink-0" />
-                <p class="text-sm">{{ message.text }}</p>
-              </div>
-            </Transition>
-          </form>
-        </div>
+              <CheckCircleIcon v-if="message.type === 'success'" class="h-5 w-5 shrink-0" aria-hidden="true" />
+              <XCircleIcon v-else class="h-5 w-5 shrink-0" aria-hidden="true" />
+              {{ message.text }}
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { 
-  EnvelopeIcon, 
-  ChatBubbleLeftRightIcon,
-  MapPinIcon,
-  ArrowTopRightOnSquareIcon,
-  UserIcon,
-  DocumentTextIcon,
-  ChatBubbleBottomCenterTextIcon,
-  PaperAirplaneIcon,
-  CheckCircleIcon,
-  XCircleIcon
+import {
+  CheckCircleIcon, CodeBracketIcon, DocumentArrowDownIcon, EnvelopeIcon, MapPinIcon, PaperAirplaneIcon, XCircleIcon
 } from '@heroicons/vue/24/outline'
 import emailjs from '@emailjs/browser'
+import SectionHeading from './SectionHeading.vue'
+import BrandIcon from './BrandIcon.vue'
+import { links } from '../data/profile'
 
 const { t } = useI18n()
+const emailParts = links.email.split('@')
 
-const form = ref({
-  name: '',
-  email: '',
-  subject: '',
-  message: ''
-})
+const items = computed(() => [
+  { key: 'email', icon: EnvelopeIcon, label: t('contact.email'), value: links.email, href: `mailto:${links.email}`, ltr: true },
+  { key: 'github', brand: 'github', label: t('contact.github'), value: `@${links.githubUser}`, href: links.github, external: true, ltr: true },
+  { key: 'linkedin', brand: 'linkedin', label: t('contact.linkedin'), value: t('contact.linkedinValue'), href: links.linkedin, external: true },
+  { key: 'cv', icon: DocumentArrowDownIcon, label: t('contact.cv'), value: t('contact.cvValue'), href: links.cv, download: true },
+  { key: 'location', icon: MapPinIcon, label: t('contact.location'), value: t('contact.locationValue') }
+])
 
+const emptyForm = () => ({ name: '', email: '', subject: '', message: '', website: '' }) // website = honeypot
+const form = ref(emptyForm())
 const isSubmitting = ref(false)
 const message = ref(null)
 
 const handleSubmit = async () => {
+  // Only bots fill the hidden "website" field: drop the request silently
+  if (form.value.website) {
+    form.value = emptyForm()
+    return
+  }
   isSubmitting.value = true
   message.value = null
-  
   try {
     await emailjs.send(
       'service_zarud3j',
       'template_dmnf4q3',
-      {
-        from_name: form.value.name,
-        from_email: form.value.email,
-        subject: form.value.subject,
-        message: form.value.message
-      },
-      'Yq2xjkZCwgHBcNII5'
+      { from_name: form.value.name, from_email: form.value.email, subject: form.value.subject, message: form.value.message },
+      // Spam protection built into the EmailJS SDK
+      { publicKey: 'Yq2xjkZCwgHBcNII5', blockHeadless: true, limitRate: { id: 'contact-form', throttle: 10000 } }
     )
-    
-    message.value = {
-      type: 'success',
-      text: t('contact.form.success')
-    }
-    
-    // Reset form
-    form.value = { name: '', email: '', subject: '', message: '' }
-    
-    // Clear message after 5 seconds
-    setTimeout(() => {
-      message.value = null
-    }, 5000)
+    message.value = { type: 'success', text: t('contact.form.success') }
+    form.value = emptyForm()
+    setTimeout(() => { message.value = null }, 6000)
   } catch (error) {
     console.error('Error sending message:', error)
-    message.value = {
-      type: 'error',
-      text: t('contact.form.fail')
-    }
+    message.value = { type: 'error', text: t('contact.form.fail') }
   } finally {
     isSubmitting.value = false
   }

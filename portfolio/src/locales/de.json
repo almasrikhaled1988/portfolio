@@ -1,75 +1,71 @@
 {
+    "meta": {
+        "title": "Khaled Almasri – Full-Stack-Entwickler",
+        "description": "Khaled Almasri: Full-Stack-Entwickler (Vue.js, Node.js) und Mechatroniker in Wien. Projekte, Erfahrung und Kontakt."
+    },
     "nav": {
         "name": "Khaled Almasri",
+        "logo": "Khaled",
+        "main": "Hauptnavigation",
+        "home": "Start",
         "about": "Über mich",
         "skills": "Fähigkeiten",
         "projects": "Projekte",
-        "experience": "Erfahrung",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "resume": "Lebenslauf",
+        "themes": "Farben",
+        "chooseTheme": "Farbschema wählen",
+        "language": "Sprache wählen",
+        "openMenu": "Menü öffnen",
+        "closeMenu": "Menü schließen"
+    },
+    "themes": {
+        "ocean": "Ozeanblau",
+        "gold": "Nachtgold",
+        "green": "Naturgrün",
+        "silver": "Silber",
+        "purple": "Königslila",
+        "red": "Karminrot"
+    },
+    "lang": {
+        "en": "English",
+        "de": "Deutsch",
+        "ar": "العربية"
     },
     "hero": {
-        "greeting": "Hi, ich bin",
-        "name": "Khaled Almasri",
-        "subtitle": "Ein leidenschaftlicher Softwareentwickler, der schöne Web-Erlebnisse schafft",
-        "viewWork": "Meine Arbeit ansehen",
-        "getInTouch": "Kontakt aufnehmen",
-        "available": "Verfügbar für Arbeit",
-        "badge": "Offen für Arbeit",
-        "downloadCV": "Lebenslauf",
-        "scroll": "Scrollen"
+        "badge": "Offen für neue Aufgaben",
+        "greeting": "Ich bin",
+        "name": "KHALED",
+        "role": "Full-Stack-Entwickler",
+        "intro": "Ich bin Khaled, Full-Stack-Entwickler (Vue, Node.js) und Mechatroniker bei Schneider Electric. Ich mache aus echten Problemen einfache, schnelle Software.",
+        "cta": "Meine Projekte ansehen",
+        "github": "GitHub-Profil",
+        "linkedin": "LinkedIn-Profil",
+        "email": "E-Mail schreiben",
+        "status": "System bereit. KI-Assistent online.",
+        "launch": "RisPulse öffnen, meinen KI-Rechercheassistenten für Gerichtsentscheidungen (öffnet in neuem Tab)"
     },
     "about": {
         "title": "Über mich",
-        "subtitle": "Lerne mich kennen",
-        "photoAlt": "Professionelles Foto",
-        "description1": "Ich bin ein leidenschaftlicher Softwareentwickler mit einem starken Fundament in modernen Webtechnologien. Meine Reise in der Technik begann mit der Neugier, wie Dinge im Internet funktionieren, was mich dazu führte, eine Karriere in der Softwareentwicklung einzuschlagen.",
-        "description2": "Ich spezialisiere mich auf den Aufbau responsiver und benutzerfreundlicher Webanwendungen mit Fachwissen sowohl in der Frontend- als auch in der Backend-Entwicklung. Ich lerne ständig dazu und bleibe auf dem neuesten Stand der Technik, um die besten Lösungen zu liefern.",
-        "description3": "Ich verfüge auch über ein fundiertes Verständnis von Konzepten der Künstlichen Intelligenz, einschließlich Machine-Learning-Workflows, Datenverarbeitung und KI-gestützter Entwicklung. In Verbindung mit meinem Hintergrund in Hardware und Mechatronik schlage ich die Brücke zwischen Software und physischen Systemen, was es mir ermöglicht, intelligente Lösungen für die reale Welt zu bauen.",
-        "educationTitle": "Bildung & Expertise",
-        "edu1Title": "Full Stack Webentwickler (Lehre)",
-        "edu1Sub": "Berufsbildung (VET), Österreich",
-        "edu1Desc": "Frontend- und Backend-Entwicklung, APIs, Datenbanken und moderne Webtechnologien.",
-        "edu2Title": "Mechatroniker (Lehre)",
-        "edu2Sub": "Berufsbildung (VET), Österreich",
-        "edu2Desc": "Hardwaresysteme, Elektronik, Automatisierung, Fehlersuche und Industrietechnologie.",
-        "edu3Title": "Künstliche Intelligenz & Maschinelles Lernen (Selbststudium / Praktische Erfahrung)",
-        "edu3Desc": "KI-Grundlagen, Modellnutzung, Automatisierung, Prompt-Engineering und KI-gestützte Entwicklungsworkflows."
-    },
-    "skills": {
-        "title": "Fähigkeiten",
-        "subtitle": "Was ich kann",
-        "technical": "Technisch",
-        "soft": "Soft Skills",
-        "focus": "Aktueller Fokus",
-        "categories": {
-            "software": "Software",
-            "ai": "KI & ML",
-            "hardware": "Hardware"
-        },
-        "items": {
-            "js": "JavaScript",
-            "vue": "Vue.js",
-            "node": "Node.js",
-            "python": "Python",
-            "java": "Java",
-            "ai": "Künstliche Intelligenz (KI)",
-            "aiDev": "KI-gestützte Entwicklung",
-            "electronics": "Elektronikreparatur (Komponentenebene)",
-            "circuit": "Schaltungsdiagnose",
-            "soldering": "Löten & Rework",
-            "embedded": "Embedded-Hardware-Grundlagen",
-            "mechatronische": "Mechatronische Systeme",
-            "problemSolving": "Problemlösung",
-            "collaboration": "Teamarbeit",
-            "communication": "Kommunikation",
-            "timeManagement": "Zeitmanagement",
-            "adaptability": "Anpassungsfähigkeit",
-            "criticalThinking": "Kritisches Denken"
-        }
+        "subtitle": "Von der Handy-Reparatur zu KI-gestützten Web-Apps",
+        "photoAlt": "Foto von Khaled Almasri",
+        "basedIn": "Wohnort",
+        "basedInValue": "Wien, Österreich",
+        "focus": "Schwerpunkt",
+        "focusValue": "Web-Apps & KI",
+        "background": "Hintergrund",
+        "backgroundValue": "Mechatronik & Automatisierung",
+        "downloadCV": "Lebenslauf herunterladen",
+        "storyTitle": "Mein Weg",
+        "story1Title": "Zuerst Hardware.",
+        "story1Text": "Angefangen habe ich mit der Reparatur von Handys und Computern im eigenen Geschäft. Danach habe ich in Österreich die Lehre zum Mechatroniker gemacht. Heute arbeite ich in der Automatisierung bei Schneider Electric in Wien.",
+        "story2Title": "Dann Software.",
+        "story2Text": "Ich wollte Dinge bauen, die Menschen jeden Tag nutzen. Deshalb mache ich die Full-Stack-Ausbildung bei Codersbay Wien: Vue, Node.js, APIs und Datenbanken.",
+        "story3Title": "Jetzt: KI im Web.",
+        "story3Text": "Ich entwickle Web-Apps mit KI, zum Beispiel RisPulse, einen Rechercheassistenten für österreichische Gerichtsentscheidungen. Mein Hardware-Wissen hilft mir zu verstehen, wie echte Systeme funktionieren.",
+        "experienceTitle": "Berufserfahrung"
     },
     "experience": {
-        "title": "Berufserfahrung",
-        "subtitle": "Karriereweg",
         "languages": "Sprachen",
         "certifications": "Zertifikate & Tools",
         "items": {
@@ -121,14 +117,71 @@
             "arduino": "Arduino & Raspberry Pi"
         }
     },
+    "skills": {
+        "title": "Technische Fähigkeiten",
+        "subtitle": "Womit ich Web-Apps, KI-Funktionen und Industrieanlagen baue",
+        "categories": {
+            "software": "Softwareentwicklung",
+            "ai": "KI & Machine Learning",
+            "hardware": "Hardware & Automatisierung"
+        },
+        "items": {
+            "vue": "Vue.js",
+            "js": "JavaScript",
+            "ts": "TypeScript",
+            "node": "Node.js",
+            "express": "Express",
+            "mongodb": "MongoDB",
+            "tailwind": "Tailwind CSS",
+            "html": "HTML & CSS",
+            "git": "Git & GitHub",
+            "python": "Python",
+            "java": "Java",
+            "ai": "Künstliche Intelligenz (KI)",
+            "aiDev": "KI-gestützte Entwicklung",
+            "rag": "RAG- & LLM-Apps",
+            "prompt": "Prompt-Engineering",
+            "mechatronics": "Mechatronische Systeme",
+            "sps": "SPS / TIA Portal",
+            "eplan": "EPLAN",
+            "electronics": "Elektronikreparatur (Komponentenebene)",
+            "circuit": "Schaltungsdiagnose",
+            "soldering": "Löten & Rework",
+            "embedded": "Embedded-Hardware-Grundlagen",
+            "autocad": "AutoCAD",
+            "arduino": "Arduino & Raspberry Pi"
+        },
+        "learning": "Ständiges Lernen & Weiterentwicklung"
+    },
     "projects": {
-        "title": "Projekte",
-        "subtitle": "Ausgewählte Arbeiten",
-        "description": "Hier sind einige meiner neuesten Projekte, die meine Fähigkeiten und Leidenschaft für Entwicklung zeigen.",
-        "viewCode": "Code ansehen",
-        "liveDemo": "Live-Demo",
-        "featured": "Hervorgehoben",
-        "viewAll": "Alle Projekte auf GitHub ansehen",
+        "title": "Ausgewählte Projekte",
+        "subtitle": "Web-Apps, die ich entworfen, gebaut und veröffentlicht habe",
+        "search": "Projekte durchsuchen...",
+        "filters": "Filter",
+        "type": "Projektart",
+        "technology": "Technologie",
+        "clear": "Filter zurücksetzen",
+        "empty": "Kein Projekt passt zu Ihrer Suche.",
+        "viewDetails": "Details ansehen",
+        "description": "Beschreibung",
+        "technologies": "Technologien",
+        "info": "Projektinfo",
+        "status": "Status",
+        "live": "Online",
+        "source": "Quellcode",
+        "openSource": "Öffentlich auf GitHub",
+        "private": "Privates Repository",
+        "livePreview": "Live ansehen",
+        "viewSource": "Quellcode ansehen",
+        "close": "Schließen",
+        "moreOnGithub": "Weitere Projekte auf GitHub",
+        "categories": {
+            "ai": "KI-App",
+            "education": "Lernplattform",
+            "ecommerce": "Onlineshop",
+            "game": "Spiel",
+            "webapp": "Web-App"
+        },
         "items": {
             "p1": {
                 "title": "TechWave Shop",
@@ -153,24 +206,26 @@
         }
     },
     "contact": {
-        "title": "Kontakt aufnehmen",
-        "subtitle": "Lass uns zusammenarbeiten",
-        "description": "Haben Sie ein Projekt im Sinn? Kontaktieren Sie mich gerne. Ich bin immer offen für neue Möglichkeiten.",
-        "info": "Kontaktinformationen",
-        "connect": "Mit mir verbinden",
-        "emailLabel": "E-Mail",
-        "locationLabel": "Standort",
-        "location": "Österreich",
-        "availableNow": "Verfügbar für Freelance",
-        "responseTime": "Antwortet normalerweise innerhalb von 24 Stunden",
+        "title": "Kontakt",
+        "subtitle": "Offen für neue Aufgaben und Zusammenarbeit",
+        "getInTouch": "Kontakt aufnehmen",
+        "sendMessage": "Nachricht senden",
+        "email": "E-Mail",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "linkedinValue": "Vernetzen wir uns",
+        "location": "Standort",
+        "locationValue": "Wien, Österreich",
+        "cv": "Lebenslauf",
+        "cvValue": "PDF herunterladen",
         "form": {
-            "name": "Name",
+            "name": "Vollständiger Name",
             "namePlaceholder": "Ihr Name",
-            "email": "E-Mail",
-            "emailPlaceholder": "your@email.com",
+            "email": "E-Mail-Adresse",
+            "emailPlaceholder": "ihre{'@'}email.at",
             "subject": "Betreff",
             "subjectPlaceholder": "Projektanfrage",
-            "message": "Nachricht",
+            "message": "Ihre Nachricht",
             "messagePlaceholder": "Erzählen Sie mir von Ihrem Projekt...",
             "send": "Nachricht senden",
             "sending": "Wird gesendet...",
@@ -178,15 +233,12 @@
             "fail": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
         }
     },
-    "stats": {
-        "years": "Jahre Erfahrung",
-        "projects": "Abgeschlossene Projekte",
-        "technologies": "Technologien"
-    },
-    "lang": {
-        "en": "English",
-        "ar": "العربية",
-        "de": "Deutsch",
-        "select": "Sprache"
+    "footer": {
+        "tagline": "Full-Stack-Entwickler für schnelle Web-Apps und KI-Tools, mit Hintergrund in der Mechatronik.",
+        "quickLinks": "Schnellzugriff",
+        "connect": "Vernetzen",
+        "rights": "Alle Rechte vorbehalten.",
+        "builtWith": "Gebaut mit Vue 3 · Vite · Tailwind CSS",
+        "backToTop": "Nach oben"
     }
 }
